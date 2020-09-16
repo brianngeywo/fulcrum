@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+      <%= image_tag @property.property_cover_photo if @property.property_cover_photo %>
+<br>
+<br>
+
+<%= @property.user.email %>
+<%= @property.address %>
+<%= @property.price %>
+<%= @property.bedrooms %>
+<br>
+<br>
+<%= @agent.email %>
+<br>
+<%= @agent.company %>
+<br>
+<%= link_to 'Edit', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
