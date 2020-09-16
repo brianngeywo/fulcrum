@@ -14,6 +14,8 @@
   <div class="actions">
   <%= form.label :address %>
   <%= form.text_field :address %>
+    <%= form.label :for_sale %>
+  <%= form.select :for_sale, options_for_select({"for sale" => true, "for rent" => false}, @property.for_sale) %>
   <%= form.label :bedrooms %>
   <%= form.number_field :bedrooms %>
   <%= form.label :price %>

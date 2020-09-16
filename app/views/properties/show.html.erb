@@ -1,11 +1,15 @@
 <p id="notice"><%= notice %></p>
-      <%= image_tag @property.property_cover_photo if @property.property_cover_photo %>
+      <%= image_tag @property.property_cover_photo if @property.property_cover_photo.present? %>
 <br>
 <br>
-
 <%= @property.user.email %>
+<% if @property.for_sale? %>
+<%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "for sale" %>
+<% else %>
+<%= @property.price > 0 ? number_to_currency(@property.price, precision: 0) : "for sale" %>/month
+<% end %>
 <%= @property.address %>
-<%= @property.price %>
+
 <%= @property.bedrooms %>
 <br>
 <br>
@@ -13,5 +17,7 @@
 <br>
 <%= @agent.company %>
 <br>
+
+<%= render 'agent_properties' %>
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
