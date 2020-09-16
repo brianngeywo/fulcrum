@@ -16,6 +16,9 @@
   <%= form.text_field :address %>
     <%= form.label :for_sale %>
   <%= form.select :for_sale, options_for_select({"for sale" => true, "for rent" => false}, @property.for_sale) %>
+  <% opts = @property.for_sale? ? { "available" => "available" , "sold" => "sold" } : { "available" => "available" , "leased" => "leased" } %>
+    <%= form.label :status %>
+  <%= form.select :status, options_for_select(opts, @property.status) %>
   <%= form.label :bedrooms %>
   <%= form.number_field :bedrooms %>
   <%= form.label :price %>

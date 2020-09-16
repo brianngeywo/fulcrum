@@ -1,0 +1,13 @@
+<br>
+<br>
+<br>
+<br>
+<%=  @properties_sold %> sold
+<br>
+<%=  @properties_for_sale %> for sale
+<br>
+<%=  @properties_for_rent %> for rent
+<br>
+<%=  @properties_leased %> leased
+
+<%= render 'properties/properties', properties: @user.properties %>
