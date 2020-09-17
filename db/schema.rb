@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_17_070902) do
+ActiveRecord::Schema.define(version: 2020_09_17_172304) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -38,25 +38,25 @@ ActiveRecord::Schema.define(version: 2020_09_17_070902) do
     t.integer "bedrooms"
     t.integer "price"
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.boolean "for_sale", default: false
     t.string "status", default: "available"
-    t.float "latitude"
     t.float "longitude"
+    t.float "latitude"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name", default: "", null: false
-    t.string "last_name", default: "", null: false
-    t.integer "phone_number", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "phone_number"
     t.string "country_code", default: "254", null: false
-    t.string "company_name", default: "", null: false
-    t.string "company_offices", default: "", null: false
-    t.string "position_in_company", default: "", null: false
-    t.string "company_phone_number1", default: "", null: false
-    t.string "company_phone_number2", default: "", null: false
-    t.string "company_phone_number3", default: "", null: false
+    t.string "company_name"
+    t.string "company_offices"
+    t.string "position_in_company"
+    t.string "company_phone_number1"
+    t.string "company_phone_number2"
+    t.string "company_phone_number3"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "url", default: ""
@@ -70,6 +70,9 @@ ActiveRecord::Schema.define(version: 2020_09_17_070902) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "admin", default: false
+    t.boolean "approved", default: false, null: false
+    t.index ["approved"], name: "index_users_on_approved"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

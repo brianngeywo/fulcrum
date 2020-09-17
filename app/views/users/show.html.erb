@@ -1,6 +1,22 @@
 <br>
 <br>
-<br>
+
+<% if current_user.admin? %>
+    <%= link_to user_remove_admin_path(@user) do %>
+    remove <%= @user.company_name %> from admin?
+    <% end%>    
+    <% else %>
+    <%= link_to user_make_admin_path(@user) do %>
+        Make <%= @user.company_name %> an admin?
+    <% end%>   
+<% end %>
+
+<% if current_user.admin? && !@user.approved %>
+    <%= link_to user_approve_path(@user) do %>
+    verify <%= @user.company_name %>?
+    <% end%>     
+<% end %>
+
 <br>
 <%=  @properties_sold %> sold
 <br>

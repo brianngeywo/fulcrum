@@ -5,6 +5,11 @@ class CreateProperties < ActiveRecord::Migration[6.0]
       t.integer :bedrooms
       t.integer :price
       t.integer :user_id
+      t.boolean :for_sale, default: false
+      t.string :status, default: "available"
+      t.float :longitude
+      t.float :latitude
+      
       t.timestamps
     end
   end

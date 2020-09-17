@@ -12,7 +12,7 @@
   <tbody>
     <% @agent_properties.available.each do |property| %>
       <tr><%= link_to property do %>
-      <%= property.user.email %>
+      <%= property.user.company_name %>
       <%= property.address %>
       <%= property.price %>
       <%= property.bedrooms %>

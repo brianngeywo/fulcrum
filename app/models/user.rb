@@ -5,7 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   has_many :properties
-  def company
-  "text company"
-  end
+
 end
