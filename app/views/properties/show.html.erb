@@ -15,9 +15,21 @@
 <br>
 <%= @agent.email %>
 <br>
+<%= @property.latitude %>
+<br>
+<%= @property.longitude %>
+<br>
 <%= @agent.company %>
 <br>
 
+nearby properties
+<br>
+<% if @property.nearbys.available.present? %>
+<% @property.nearbys.available.each do |property| %>
+    <%= link_to property.address, property %>(<%= property.distance.round(2) %> kms)
+    <br>
+<% end %>
+<% end %>
 <%= render 'agent_properties' %>
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>

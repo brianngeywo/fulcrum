@@ -1,6 +1,8 @@
 class Property < ApplicationRecord
     belongs_to :user
     has_one_attached :property_cover_photo
+    geocoded_by :address
+    after_validation :geocode, :if => :address_changed?
 
     scope :latest, -> {order created_at: :desc} 
     
@@ -9,4 +11,6 @@ class Property < ApplicationRecord
     scope :for_rent, -> {where(for_sale: false, status: "available") } 
     scope :sold, -> { where(for_sale: true, status: "sold") } 
     scope :available, -> { where status: "available" } 
+
+
 end

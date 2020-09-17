@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
-
-<h1>other properfties by this agent</h1>
+<% if @agent_properties.available.present? %>
+<h1>other available properties by this agent</h1>
 
 <table>
   <thead>
@@ -10,20 +10,17 @@
   </thead>
 
   <tbody>
-    <% @agent_properties.each do |property| %>
-      <tr>
+    <% @agent_properties.available.each do |property| %>
+      <tr><%= link_to property do %>
       <%= property.user.email %>
-<%= property.address %>
-<%= property.price %>
-<%= property.bedrooms %>
-        <td><%= link_to 'Show', property %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <%= property.address %>
+      <%= property.price %>
+      <%= property.bedrooms %>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Property', new_property_path %>
+<% end %>
