@@ -12,10 +12,16 @@
   <tbody>
     <% @properties.each do |property| %>
       <tr>
-      <%= property.user.email %>
-<%= property.address %>
-<%= property.price %>
-<%= property.bedrooms %>
+        <td><% if property.for_sale? %> 
+        <td>for sale</td>
+        <%else%>  
+        <td>for rent</td> 
+        <% end %>
+        </td>
+        <td><%= property.user.email %></td>
+        <td><%= property.address %></td>
+        <td><%= property.price %></td>
+        <td><%= property.bedrooms %></td>
         <td><%= link_to 'Show', property %></td>
         <td><%= link_to 'Edit', edit_property_path(property) %></td>
         <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
