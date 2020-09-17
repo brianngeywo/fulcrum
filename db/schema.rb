@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2020_09_17_070902) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.integer "phone_number", null: false
+    t.string "country_code", default: "254", null: false
+    t.string "company_name", default: "", null: false
+    t.string "company_offices", default: "", null: false
+    t.string "position_in_company", default: "", null: false
+    t.string "company_phone_number1", default: "", null: false
+    t.string "company_phone_number2", default: "", null: false
+    t.string "company_phone_number3", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "url", default: ""
