@@ -14,18 +14,34 @@
   </div>
 
   <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.number_field :phone_number, autofocus: true%>
-  </div>
-
-  <div class="field">
     <%= f.label :country_code %><br />
     <%= f.text_field :country_code, autofocus: true%>
   </div>
 
   <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.number_field :phone_number, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :identity_card_front %><br />
+    <%= f.file_field :identity_card_front %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :identity_card_back %><br />
+    <%= f.file_field :identity_card_back %>
+  </div>
+
+  <div class="field">
     <%= f.label :company_name %><br />
     <%= f.text_field :company_name, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :business_reg_certificate %><br />
+    <%= f.file_field :business_reg_certificate %>
   </div>
 
   <div class="field">

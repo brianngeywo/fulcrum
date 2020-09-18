@@ -16,6 +16,12 @@
     <% end%>     
 <% end %>
 
+<% if current_user.admin? %>
+    <%= image_tag @user.business_reg_certificate, class: "h-32 object-cover object-center w-40"  if @user.business_reg_certificate.present? %>
+    <%= image_tag @user.identity_card_front, class: "h-32 object-cover object-center w-40"  if @user.identity_card_front.present? %>
+    <%= image_tag @user.identity_card_back, class: "h-32 object-cover object-center w-40"  if @user.identity_card_back.present? %>
+<% end %>
+
 <br>
 <%=  @properties_sold %> sold
 <br>

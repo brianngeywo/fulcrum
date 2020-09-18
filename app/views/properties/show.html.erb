@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-      <%= image_tag @property.property_cover_photo if @property.property_cover_photo.present? %>
+      <%= image_tag @property.property_cover_photo, class:"w-full h-40 object-cover object-center" if @property.property_cover_photo.present? %>
 <br>
 <br>
 <%= @property.user.email %>

@@ -1,9 +1,22 @@
 <div class="px-24 py-4">
-    <div class="grid grid-cols-4 gap-4 py-2">
+    <div class="grid grid-rows-flow grid-cols-4 gap-3">
         <% @properties.for_rent.available.each do |property| %>
-            <%= link_to property do %>
-                <%= image_tag property.property_cover_photo , class: "h-32 object-cover object-center w-40"%>
-            <% end %>
+            <div class="shadow-2xl rounded-lg capitalize text-sm">
+                <%= link_to property do %>
+                    <div class="h-40 w-full">
+                        <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" %>
+                    </div>
+                    <div class="p-2 h-24">
+                        <%= property.name %><br>
+                        <%= property.address %><br>
+                        <% if property.for_sale? %>
+                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
+                        <% else %>
+                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>/month
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
         <% end %>
     </div>
 </div>

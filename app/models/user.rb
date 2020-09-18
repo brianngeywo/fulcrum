@@ -5,5 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, :confirmable
 
   has_many :properties
+  has_one_attached :business_reg_certificate
+  has_one_attached :identity_card_front
+  has_one_attached :identity_card_back
 
 end

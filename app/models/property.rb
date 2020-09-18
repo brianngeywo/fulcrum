@@ -10,7 +10,7 @@ class Property < ApplicationRecord
     scope :for_sale, -> {where(for_sale: true, status: "available") } 
     scope :for_rent, -> {where(for_sale: false, status: "available") } 
     scope :sold, -> { where(for_sale: true, status: "sold") } 
-    scope :available, -> { where status: "available" } 
+    scope :available, -> { where status: "available" }
 
 
 end
