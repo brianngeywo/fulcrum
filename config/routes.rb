@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   end
   get "users/:id" => "users#show"
   root to: 'home#guide'
+  get "home/rentals"
+  get "home/property_on_sale"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

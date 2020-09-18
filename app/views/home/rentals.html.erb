@@ -1,6 +1,6 @@
 <div class="px-24 py-4">
     <div class="grid grid-cols-4 gap-4 py-2">
-        <% @properties.available.each do |property| %>
+        <% @properties.for_rent.available.each do |property| %>
             <%= link_to property do %>
                 <%= image_tag property.property_cover_photo , class: "h-32 object-cover object-center w-40"%>
             <% end %>

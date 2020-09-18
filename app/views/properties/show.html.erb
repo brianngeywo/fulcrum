@@ -21,12 +21,19 @@
 
 nearby properties
 <br>
+<div class="flex space-x-4 px-24">
 <% if @property.nearbys.available.present? %>
-<% @property.nearbys.available.each do |property| %>
-    <%= link_to property.address, property %>(<%= property.distance.round(2) %> kms)
-    <br>
+    <% @property.nearbys.available.last(4).each do |property| %>
+        <%= link_to property do %>
+            <%= image_tag property.property_cover_photo , class: "h-32 object-cover object-center w-40"%>
+            (<%= property.distance.round(2) %> kms)
+        <% end %>
+        <br>
+    <% end %>
 <% end %>
-<% end %>
+</div>
+<div class="">
 <%= render 'agent_properties' %>
+</div>
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>

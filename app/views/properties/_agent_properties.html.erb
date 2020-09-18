@@ -1,26 +1,14 @@
-<p id="notice"><%= notice %></p>
 <% if @agent_properties.available.present? %>
 <h1>other available properties by this agent</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="flex space-x-4 px-24">
     <% @agent_properties.available.each do |property| %>
-      <tr><%= link_to property do %>
-      <%= property.user.company_name %>
-      <%= property.address %>
-      <%= property.price %>
-      <%= property.bedrooms %>
-      </tr>
+      <%= link_to property do %>
+        <%= image_tag property.property_cover_photo , class: "h-32 object-cover object-center w-40"%>
+        <%= property.user.company_name %>
+        <%= property.address %>
+        <%= property.price %>
+        <%= property.bedrooms %>
+      <% end %>
     <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+  </div>
 <% end %>

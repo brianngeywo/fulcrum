@@ -1,35 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Properties</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @properties.each do |property| %>
-      <tr>
-        <td><% if property.for_sale? %> 
-        <td>for sale</td>
-        <%else%>  
-        <td>for rent</td> 
+<div class="px-24 py-4">
+    <div class="grid grid-rows-flow grid-cols-4 gap-4">
+        <% @properties.available.each do |property| %>
+            <%= link_to property do %>
+            <div class="h-32 w-40 m-3">
+                <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" %>
+            </div>
+            <% end %>
         <% end %>
-        </td>
-        <td><%= property.user.email %></td>
-        <td><%= property.address %></td>
-        <td><%= property.price %></td>
-        <td><%= property.bedrooms %></td>
-        <td><%= link_to 'Show', property %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-        <td><%= link_to 'Destroy', property, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Property', new_property_path %>
+    </div>
+</div>
