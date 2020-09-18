@@ -1,6 +1,5 @@
 <br>
 <br>
-
 <% if current_user.admin? %>
     <%= link_to user_remove_admin_path(@user) do %>
     remove <%= @user.company_name %> from admin?
