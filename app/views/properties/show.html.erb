@@ -58,11 +58,11 @@
                                             <%= property.address %><br>
                                             </div>
                                             <div class="text-teal-700 font-bold whitespace-normal">
-                                            <% if property.for_sale? %>
-                                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
-                                            <% else %>
-                                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>/month
-                                            <% end %>
+                                                <% if property.for_sale? %>
+                                                    <div>contact agent</div>
+                                                <% else %>
+                                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                                <% end %>
                                             </div>
                                         </div>
                                     <% end %>
