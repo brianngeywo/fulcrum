@@ -11,25 +11,49 @@
     </div>
   <% end %>
 
-  <div class="actions">
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.label :address %>
-  <%= form.text_field :address %>
+  <div class="grid">
+    <div>
+    <%= form.label :name %>
+    <%= form.text_field :name, class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
+    <%= form.label :address %>
+    <%= form.text_field :address, class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
     <%= form.label :for_sale %>
-  <%= form.select :for_sale, options_for_select({"for sale" => true, "for rent" => false}, @property.for_sale) %>
-  <% opts = @property.for_sale? ? { "available" => "available" , "sold" => "sold" } : { "available" => "available" , "leased" => "leased" } %>
-    <%= form.label :status %>
-  <%= form.select :status, options_for_select(opts, @property.status) %>
-  <%= form.label :bedrooms %>
-  <%= form.number_field :bedrooms %>
-  <%= form.label :bathrooms %>
-  <%= form.number_field :bathrooms %>
-  <%= form.label :price %>
-  <%= form.number_field :price %>
-  <%= form.file_field :property_cover_photo %>
-  <%= form.label :description %>
-  <%= form.text_field :description %>
-    <%= form.submit %>
+    <%= form.select :for_sale, options_for_select({"for sale" => true, "for rent" => false}, @property.for_sale), class:"bg-gray-200 my-2" %>
+    <% opts = @property.for_sale? ? { "available" => "available" , "sold" => "sold" } : { "available" => "available" , "leased" => "leased" } %>
+    </div>
+    <div>
+        <%= form.label :status %>
+    <%= form.select :status, options_for_select(opts, @property.status), class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
+      <%= form.label :bedrooms %>
+    <%= form.number_field :bedrooms, class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
+      <%= form.label :bathrooms %>
+    <%= form.number_field :bathrooms, class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
+      <%= form.label :parking_space %>
+    <%= form.number_field :parking_space, class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
+      <%= form.label :price %>
+    <%= form.number_field :price, class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
+    <%= form.file_field :property_cover_photo, class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
+      <%= form.label :description %><br>
+    <%= form.text_area :description, class:"bg-gray-200 my-2" %>
+    </div>
+    <div>
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>

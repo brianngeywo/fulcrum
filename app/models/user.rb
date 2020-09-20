@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_one_attached :business_reg_certificate
   has_one_attached :identity_card_front
   has_one_attached :identity_card_back
+  has_one_attached :company_logo
 
 end

@@ -28,7 +28,6 @@
     <%= f.file_field :identity_card_front %>
   </div>
 
-
   <div class="field">
     <%= f.label :identity_card_back %><br />
     <%= f.file_field :identity_card_back %>
@@ -37,6 +36,11 @@
   <div class="field">
     <%= f.label :company_name %><br />
     <%= f.text_field :company_name, autofocus: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :company_logo %><br />
+    <%= f.file_field :company_logo %>
   </div>
 
   <div class="field">

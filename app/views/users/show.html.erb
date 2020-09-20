@@ -1,34 +1,76 @@
+<div class="h-auto px-24 bg-gray-200" style="backgroung-image: #{<%= url_for(@user.properties.last.property_cover_photo) if @user.properties.last.property_cover_photo.attached? %>}">
+    <div class="pt-12 pb-6 flex">
+        <%= image_tag @user.company_logo, class:"w-24 h-24 object-cover object-center border-4 border-white" if @user.company_logo.attached? %>
+        <div class="">
+            <div class="text-teal-700 font-bold capitalize px-6"><%= @user.company_name %></div>
+            <div class="text-teal-700 font-bold capitalize px-6"><%= @user.country_code %><%= @user.phone_number %></div>
+            <div class="text-teal-700 font-bold px-6"><%= @user.email %></div>
+        </div>
+    </div>
+</div>
+<div class="flex px-24">
+    <div class="w-2/5 bg-gray-300 rounded-lg p-3 m-3">
+        <div class="p-3 grid grid-cols-2 grid-rows-flow capitalize bg-gray-100 rounded-lg">
+            <div class="grid justify-items-center">
+                <div class="text-lg font-medium">for rent</div>
+                <div><%=  @properties_for_rent %></div>
+            </div>
+            <div class="grid justify-items-center">
+                <div class="text-lg font-medium">for sale</div>
+                <div><%=  @properties_for_sale %></div>
+            </div>
+            <div class="grid justify-items-center">
+                <div class="text-lg font-medium">sold</div>
+                <div><%=  @properties_sold %></div>
+            </div>
+            <div class="grid justify-items-center">
+                <div class="text-lg font-medium">leased</div>
+                <div><%=  @properties_leased %></div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full">
+        <div class="py-4 px-6">
+                <% @properties.available.each do |property| %>
+                    <div class="shadow-lg rounded-r-lg capitalize text-sm my-4 border h-48">
+                        <%= link_to property do %>
+                            <div class="flex h-48 bg-gra-100">
+                                <div class="h-48 w-56">
+                                    <%= image_tag property.property_cover_photo , class: "h-full w-full object-cover object-center" %>
+                                </div>
+                                <div class="p-2">
+                                    <div class="text-xl font-bold">
+                                    <%= property.name %><br>
+                                    </div>
+                                    <div class="text-gray-700 text-xs">
+                                        <% if property.for_sale? %>
+                                            <div>for sale</div>
+                                        <% else %>
+                                            <div>for rent</div>
+                                        <% end %>
+                                    </div>
+                                    <div class="text-gray-800">
+                                        <%= property.address %><br>
+                                    </div>
+                                    <div class="text-teal-700 font-bold whitespace-normal">
+                                        <% if property.for_sale? %>
+                                            <div>contact agent</div>
+                                        <% else %>
+                                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                        <% end %>
+                                    </div>
+                                    <div class="h-20 w-20 grid justify-items-start my-2">
+                                        <%= image_tag @user.company_logo , class:"h-full object-cover object-center"%> 
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+        </div>
+    </div>
+</div>
 <br>
-<br>
-<% if current_user.admin? %>
-    <%= link_to user_remove_admin_path(@user) do %>
-    remove <%= @user.company_name %> from admin?
-    <% end%>    
-    <% else %>
-    <%= link_to user_make_admin_path(@user) do %>
-        Make <%= @user.company_name %> an admin?
-    <% end%>   
-<% end %>
 
-<% if current_user.admin? && !@user.approved %>
-    <%= link_to user_approve_path(@user) do %>
-    verify <%= @user.company_name %>?
-    <% end%>     
-<% end %>
 
-<% if current_user.admin? %>
-    <%= image_tag @user.business_reg_certificate, class: "h-32 object-cover object-center w-40"  if @user.business_reg_certificate.present? %>
-    <%= image_tag @user.identity_card_front, class: "h-32 object-cover object-center w-40"  if @user.identity_card_front.present? %>
-    <%= image_tag @user.identity_card_back, class: "h-32 object-cover object-center w-40"  if @user.identity_card_back.present? %>
-<% end %>
 
-<br>
-<%=  @properties_sold %> sold
-<br>
-<%=  @properties_for_sale %> for sale
-<br>
-<%=  @properties_for_rent %> for rent
-<br>
-<%=  @properties_leased %> leased
-
-<%= render 'properties/properties', properties: @user.properties %>
