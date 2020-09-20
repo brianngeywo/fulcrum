@@ -18,8 +18,8 @@
 </div>
 <div class="px-24 py-4">
     <div class="flex justify-center items-center">
-        <div class="py-3 text-center text-2xl capitalize flex-grow">all properties</div>
-        <%= link_to 'view all rental properties', properties_path, class:"text-right capitalize" %>
+        <div class="py-3 text-center text-2xl capitalize flex-grow font-bold text-gray-700">all properties</div>
+        <%= link_to 'view all properties', properties_path, class:"text-right capitalize" %>
     </div>
     <div class="grid grid-cols-4 gap-4 py-2">
         <% Property.last(4).each do |property| %>
@@ -32,15 +32,22 @@
                         <div class="font-bold">
                         <%= property.name %><br>
                         </div>
+                        <div class="text-gray-700 text-xs">
+                            <% if property.for_sale? %>
+                                <div>for sale</div>
+                            <% else %>
+                                <div>for rent</div>
+                            <% end %>
+                        </div>
                         <div class="text-gray-700">
                         <%= property.address %><br>
                         </div>
                         <div class="text-teal-700 font-bold whitespace-normal">
-                        <% if property.for_sale? %>
-                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
-                        <% else %>
-                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>/month
-                        <% end %>
+                            <% if property.for_sale? %>
+                                <div>contact agent</div>
+                            <% else %>
+                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                            <% end %>
                         </div>
                     </div>
                 <% end %>
@@ -50,7 +57,7 @@
 </div>
 <div class="px-24 py-4">
     <div class="flex justify-center items-center">
-        <div class="py-3 text-center text-2xl capitalize flex-grow">rental properties</div>
+        <div class="py-3 text-center text-2xl capitalize flex-grow font-bold text-gray-700">rental properties</div>
         <%= link_to 'view all rental properties', home_rentals_path, class:"text-right capitalize" %>
     </div>
     <div class="grid grid-cols-4 gap-4 py-2">
@@ -64,15 +71,22 @@
                         <div class="font-bold">
                         <%= property.name %><br>
                         </div>
+                       <div class="text-gray-700 text-xs">
+                            <% if property.for_sale? %>
+                                <div>for sale</div>
+                            <% else %>
+                                <div>for rent</div>
+                            <% end %>
+                        </div>
                         <div class="text-gray-700">
                         <%= property.address %><br>
                         </div>
                         <div class="text-teal-700 font-bold whitespace-normal">
-                        <% if property.for_sale? %>
-                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
-                        <% else %>
-                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>/month
-                        <% end %>
+                            <% if property.for_sale? %>
+                                <div>contact agent</div>
+                            <% else %>
+                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                            <% end %>
                         </div>
                     </div>
                 <% end %>
@@ -82,7 +96,7 @@
 </div>
 <div class="px-24 py-4">
     <div class="flex justify-center items-center">
-        <div class="py-3 text-center text-2xl capitalize flex-grow">properties on sale</div>
+        <div class="py-3 text-center text-2xl capitalize flex-grow font-bold text-gray-700">properties on sale</div>
         <%= link_to 'view all properties for sale', home_property_on_sale_path, class:"text-right capitalize" %>
     </div>
     <div class="grid grid-cols-4 gap-4 py-2">
@@ -96,15 +110,22 @@
                         <div class="font-bold">
                         <%= property.name %><br>
                         </div>
+                        <div class="text-gray-700 text-xs">
+                            <% if property.for_sale? %>
+                                <div>for sale</div>
+                            <% else %>
+                                <div>for rent</div>
+                            <% end %>
+                        </div>
                         <div class="text-gray-700">
                         <%= property.address %><br>
                         </div>
                         <div class="text-teal-700 font-bold whitespace-normal">
-                        <% if property.for_sale? %>
-                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
-                        <% else %>
-                            <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>/month
-                        <% end %>
+                            <% if property.for_sale? %>
+                                <div>contact agent</div>
+                            <% else %>
+                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                            <% end %>
                         </div>
                     </div>
                 <% end %>
