@@ -11,49 +11,53 @@
     </div>
   <% end %>
 
-  <div class="grid">
-    <div>
-    <%= form.label :name %>
-    <%= form.text_field :name, class:"bg-gray-200 my-2" %>
+  <div class="grid border shadow-md rounded-lg p-4 text-sm bg-white">
+    <div class="px-5">
+    <%= form.label :name %><br>
+    <%= form.text_field :name, class:"my-2 border mx-5 p-1" %>
     </div>
-    <div>
-    <%= form.label :address %>
-    <%= form.text_field :address, class:"bg-gray-200 my-2" %>
+    <div class="px-5">
+    <%= form.label :address %><br>
+    <%= form.text_field :address, class:"my-2 border mx-5 p-1" %>
     </div>
-    <div>
-    <%= form.label :for_sale %>
-    <%= form.select :for_sale, options_for_select({"for sale" => true, "for rent" => false}, @property.for_sale), class:"bg-gray-200 my-2" %>
-    <% opts = @property.for_sale? ? { "available" => "available" , "sold" => "sold" } : { "available" => "available" , "leased" => "leased" } %>
+    <div class="px-5">
+    <%= form.label :for_sale %><br>
+      <div class="capitalize mx-5">
+        <%= form.select :for_sale, options_for_select({"for sale" => true, "for rent" => false}, @property.for_sale),{}, {class: 'bg-white capitalize border p-2', selected: @set} %>
+        <% opts = @property.for_sale? ? { "available" => "available" , "sold" => "sold" } : { "available" => "available" , "leased" => "leased" } %>
+      </div>
     </div>
-    <div>
-        <%= form.label :status %>
-    <%= form.select :status, options_for_select(opts, @property.status), class:"bg-gray-200 my-2" %>
+    <div class="px-5">
+        <%= form.label :status %><br>
+        <div class="capitalize mx-5">
+          <%= form.select :status, options_for_select(opts, @property.status), {}, {class: 'bg-white capitalize border p-2', selected: @set} %>
+      </div>
     </div>
-    <div>
-      <%= form.label :bedrooms %>
-    <%= form.number_field :bedrooms, class:"bg-gray-200 my-2" %>
+    <div class="px-5">
+      <%= form.label :bedrooms %><br>
+    <%= form.number_field :bedrooms, class:"my-2 border mx-5 p-1" %>
     </div>
-    <div>
-      <%= form.label :bathrooms %>
-    <%= form.number_field :bathrooms, class:"bg-gray-200 my-2" %>
+    <div class="px-5">
+      <%= form.label :bathrooms %><br>
+    <%= form.number_field :bathrooms, class:"my-2 border mx-5 p-1" %>
     </div>
-    <div>
-      <%= form.label :parking_space %>
-    <%= form.number_field :parking_space, class:"bg-gray-200 my-2" %>
+    <div class="px-5">
+      <%= form.label :parking_space %><br>
+    <%= form.number_field :parking_space, class:"my-2 border mx-5 p-1" %>
     </div>
-    <div>
-      <%= form.label :price %>
-    <%= form.number_field :price, class:"bg-gray-200 my-2" %>
+    <div class="px-5">
+      <%= form.label :price %><br>
+    <%= form.number_field :price, class:"my-2 border mx-5 p-1" %>
     </div>
-    <div>
-    <%= form.file_field :property_cover_photo, class:"bg-gray-200 my-2" %>
+    <div class="px-5">
+    <%= form.file_field :property_cover_photo, class:"my-2 border mx-5 p-1" %>
     </div>
-    <div>
+    <div class="px-5">
       <%= form.label :description %><br>
-    <%= form.text_area :description, class:"bg-gray-200 my-2" %>
+    <%= form.text_area :description, class:"my-2 border p-1 mx-5 w-full h-40" %>
     </div>
-    <div>
-      <%= form.submit %>
+    <div class="px-5 grid justify-items-center">
+      <%= form.submit "create post", disable_with: 'Submiting...', class:"font-medium text-lg bg-teal-700 text-white p-3 capitalize" %>
     </div>
   </div>
 <% end %>
