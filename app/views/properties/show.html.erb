@@ -45,7 +45,7 @@
                                 <div class="shadow-2xl rounded-lg capitalize text-sm">
                                     <%= link_to property do %>
                                         <div class="h-40 w-full">
-                                            <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" %>
+                                            <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                                         </div>
                                         <div class="p-2 h-24">
                                             <div class="font-bold">
@@ -81,10 +81,18 @@
     </div>
     <div class="w-2/5 px-4">
         <div class=" grid justify-items-center" >
-            <%= image_tag @property.user.company_logo, class:"w-24 h-24 object-cover object-center justify-self-center" if @property.user.present? %>
+            <%= image_tag @property.user.company_logo, class:"w-24 h-24 object-cover object-center justify-self-center" if @property.user.company_logo.attached? %>
             <div class="text-teal-700 text-lg font-bold capitalize my-2"><%= link_to @property.user.company_name, @property.user %></div>
             <a class="text-gray-700 uppercase text-sm border-2 border-black rounded-lg py-1 w-full text-center mx-12" href="tel:#{@property.user.country_code @property.user.phone_number}">click to call </a>
             <div></div>
+            <%= form_for :rentor, url: rentors_path, method: :post do |f| %>
+                <label class="my-2">name:</label>
+                <%= f.text_field :rentor_first_name, class:"p-2 bg-white rounded-lg" %>
+                <label class="my-2">phone number:</label>
+                <%= f.text_field :rentor_phone_number, class:"p-2 bg-white rounded-lg" %>
+                <%= f.hidden_field :property_id, value: @property.id %>
+                <%= f.submit "Submit", disable_with: 'Submiting...', class:"font-semibold tracking-wider p-2 w-full my-3 border-2 border-teal-600 bg-teal-700 text-white uppercase text-center" %>
+            <% end %>
         </div>    
     </div>    
 </div>

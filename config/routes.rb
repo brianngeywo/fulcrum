@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     match :remove_admin, :via => [:get]
     match :approve, :via => [:get]
   end
+  resources :rentors
   get "users/:id" => "users#show"
   root to: 'home#guide'
   get "home/rentals"

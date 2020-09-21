@@ -26,7 +26,7 @@
             <div class="shadow-2xl rounded-lg capitalize text-sm">
                 <%= link_to property do %>
                     <div class="h-40 w-full">
-                        <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" %>
+                        <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                     </div>
                     <div class="p-2 h-24">
                         <div class="font-bold">
@@ -65,7 +65,7 @@
             <div class="shadow-2xl rounded-lg capitalize text-sm border">
                 <%= link_to property do %>
                     <div class="h-40 w-full">
-                        <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" %>
+                        <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                     </div>
                     <div class="p-2 h-24">
                         <div class="font-bold">
@@ -104,7 +104,7 @@
             <div class="shadow-2xl rounded-lg capitalize text-sm">
                 <%= link_to property do %>
                     <div class="h-40 w-full">
-                        <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" %>
+                        <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                     </div>
                     <div class="p-2 h-24">
                         <div class="font-bold">

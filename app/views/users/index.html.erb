@@ -3,7 +3,7 @@
     <div class="p-4 bg-white shadow-2xl">
       <%= link_to user_path(user) do %>
         <div class="grid justify-items-center p-3">
-          <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" %>
+          <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" if user.company_logo.attached? %>
           <div class="text-lg font-bold"><%= user.company_name %></div>
           <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.count, "property") if user.properties %></div>
           <div class="flex space-x-4 border-t-2 border-teal-700">
@@ -16,7 +16,7 @@
     <div class="p-4 bg-white shadow-2xl">
       <%= link_to user_path(user) do %>
         <div class="grid justify-items-center p-3">
-          <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" %>
+          <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" if user.company_logo.attached? %>
           <div class="text-lg font-bold"><%= user.company_name %></div>
           <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.count, "property") if user.properties %></div>
           <div class="flex space-x-4 border-t-2 border-teal-700">
@@ -29,7 +29,7 @@
     <div class="p-4 bg-white shadow-2xl">
       <%= link_to user_path(user) do %>
         <div class="grid justify-items-center p-3">
-          <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" %>
+          <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" if user.company_logo.attached? %>
           <div class="text-lg font-bold"><%= user.company_name %></div>
           <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.count, "property") if user.properties %></div>
           <div class="flex space-x-4 border-t-2 border-teal-700">
@@ -42,7 +42,7 @@
         <div class="p-4 bg-white shadow-2xl">
       <%= link_to user_path(user) do %>
         <div class="grid justify-items-center p-3">
-          <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" %>
+          <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" if user.company_logo.attached? %>
           <div class="text-lg font-bold"><%= user.company_name %></div>
           <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.count, "property") if user.properties %></div>
           <div class="flex space-x-4 border-t-2 border-teal-700">
