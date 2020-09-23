@@ -1,0 +1,8 @@
+<div class="w-screen flex h-full">
+    <div class="w-1/4 bg-blue-900 flex">
+        <%= render 'layouts/dashboard/side_nav' %>
+    </div>
+    <div class="w-full px-4 h-full bg-gray-100">
+        <%= render 'layouts/dashboard/content', obj: current_user.properties %>
+    </div>
+</div>

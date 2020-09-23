@@ -5,6 +5,9 @@ class RentorsController < ApplicationController
   # GET /rentors.json
   def index
       @rentors = Rentor.all
+      if @rentors.length.zero?
+        flash[:alert] = 'You have no rentorss. Create one now to get started.'
+      end
   end
 
   # GET /rentors/1
@@ -24,6 +27,7 @@ class RentorsController < ApplicationController
   # POST /rentors
   # POST /rentors.json
   def create
+    Time.zone = rentor_params[:time_zone]
     @rentor = Rentor.new(rentor_params)
     @property_id = params[:property_id]
     
@@ -57,7 +61,7 @@ class RentorsController < ApplicationController
   def destroy
     @rentor.destroy
     respond_to do |format|
-      format.html { redirect_to potential_buyers_url, notice: 'rentor was successfully destroyed.' }
+      format.html { redirect_to rentors_url, notice: 'rentor was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -79,7 +83,9 @@ class RentorsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def rentor_params
     params.fetch(:property_id, {})
-    params.require(:rentor).permit(      :rentor_first_name,:rentor_last_name,:rentor_phone_number, :property_id)
+    params.require(:rentor).permit(:name,:time,:phone_number, :property_id, :time_zone)
   end
+
+
 
 end

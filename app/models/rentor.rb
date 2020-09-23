@@ -1,8 +1,6 @@
 class Rentor < ApplicationRecord
   belongs_to :property
-  validates :rentor_phone_number, presence: true
-  
-  
-
+  validates :name, presence: true
+  validates :phone_number, presence: true
   
 end

@@ -36,7 +36,7 @@
                         <%= link_to property do %>
                             <div class="flex h-48 bg-gra-100">
                                 <div class="h-48 w-56">
-                                    <%= image_tag property.property_cover_photo , class: "h-full w-full object-cover object-center" %>
+                                    <%= image_tag property.property_cover_photo , class: "h-full w-full object-cover object-center" if property.property_cover_photo.present? %>
                                 </div>
                                 <div class="p-2">
                                     <div class="text-xl font-bold">
@@ -71,6 +71,4 @@
     </div>
 </div>
 <br>
-
-
 

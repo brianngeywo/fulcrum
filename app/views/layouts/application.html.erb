@@ -23,9 +23,9 @@
   <%= link_to 'for sale', home_property_on_sale_path %>
   <%= link_to 'real estate agents', users_path %>
 
-  <%= link_to 'new property', new_property_path if user_signed_in? %>
   <div class="flex-grow"></div>
     <% if user_signed_in? %>
+      <%= link_to 'dashboard', dashboard_path %>
       <%= link_to current_user.company_name, current_user %>
       <%= link_to 'logout', destroy_user_session_path, method: :delete %>
     <% else %>

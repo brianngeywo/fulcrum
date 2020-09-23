@@ -17,7 +17,11 @@
                 <% if @property.for_sale? %>
                     <div clas="text-gray-700 capitalize font-semibold">call <%= @property.user.country_code %> <%= @property.user.phone_number %> </div>
                 <% else %>
-                    <%= @property.price > 0 ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>/month
+                    
+                    <% if @property.price.to_i > 0 %>
+                        <%= @property.price ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>/month                        
+                    <% end %>
+
                 <% end %>
                 <div class="text-gray-700"><%= @property.address %></div>
                 
@@ -87,10 +91,12 @@
             <div></div>
             <%= form_for :rentor, url: rentors_path, method: :post do |f| %>
                 <label class="my-2">name:</label>
-                <%= f.text_field :rentor_first_name, class:"p-2 bg-white rounded-lg" %>
+                <%= f.text_field :name, class:"p-2 bg-white rounded-lg" %>
                 <label class="my-2">phone number:</label>
-                <%= f.text_field :rentor_phone_number, class:"p-2 bg-white rounded-lg" %>
+                <%= f.phone_field :phone_number, class:"p-2 bg-white rounded-lg" %>
                 <%= f.hidden_field :property_id, value: @property.id %>
+   
+            </div>
                 <%= f.submit "Submit", disable_with: 'Submiting...', class:"font-semibold tracking-wider p-2 w-full my-3 border-2 border-teal-600 bg-teal-700 text-white uppercase text-center" %>
             <% end %>
         </div>    

@@ -54,9 +54,10 @@ ActiveRecord::Schema.define(version: 2020_09_21_092900) do
   end
 
   create_table "rentors", force: :cascade do |t|
-    t.string "rentor_first_name"
-    t.string "rentor_last_name"
-    t.text "rentor_phone_number"
+    t.string "name"
+    t.text "phone_number"
+    t.time "datetime"
+    t.string "time_zone", default: "Nairobi"
     t.integer "property_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,9 +1,10 @@
 class CreateRentors < ActiveRecord::Migration[6.0]
   def change
     create_table :rentors do |t|
-      t.string :rentor_first_name
-      t.string :rentor_last_name
-      t.text :rentor_phone_number
+      t.string :name
+      t.text :phone_number
+      t.time :datetime
+      t.string :time_zone, default: "Nairobi"
       t.integer :property_id
       t.timestamps
     end

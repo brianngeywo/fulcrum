@@ -5,39 +5,41 @@
       <div class="space-y-3">
         <p class="capitalize">
           <strong> Name:</strong>
-          <%=  @rentor.rentor_first_name  %>
-        </p>
-
-        <p class="capitalize">
-          <strong> Email:</strong>
-          <%=  @rentor.rentor_last_name %>
+          <%=  @rentor.name  %>
         </p>
 
         <p class="capitalize">
           <strong> phone:</strong>
-          <%=  @rentor.rentor_phone_number %>
+          <%=  @rentor.phone_number %>
         </p>
 
         <p>
           <strong> Property Interested:</strong>
-          <%=  Property.find(@rentor.property_id).name %>
-          <%  Property.find(@rentor.property_id) do %>
+          <%=  @rentor.property.name %>
             <% if @rentor.property.property_cover_photo.attached? %>
               <%= image_tag @rentor.property.property_cover_photo, class:"h-48 w-48 rounded-t-lg object-cover object-center" %>
             <% end %>
-          <% end %>
         </p>
         <p class="capitalize">
           <strong> property price:</strong>
-          <%=  Property.find(@rentor.property_id).price %> kshs
+          <%=  @rentor.property.price %> kshs
+        </p>
+                <p class="capitalize">
+          <strong> status:</strong>
+          <% if @rentor.property.for_sale? %>
+          for sale
+          <% else %>
+          for rent
+          <% end %>
+          
         </p>
         <p class="capitalize">
           <strong> location:</strong>
-          <%=  Property.find(@rentor.property_id).address %>
+          <%=  @rentor.property.address %>
         </p>
         <p class="capitalize">
           <strong> property bedrooms:</strong>
-          <%=  Property.find(@rentor.property_id).bedrooms %> bedrooms
+          <%=  @rentor.property.bedrooms %> bedrooms
         </p>
       </div>
       <div class="my-4">
