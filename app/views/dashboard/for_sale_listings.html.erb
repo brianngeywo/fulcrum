@@ -1,9 +1,15 @@
-<div class="w-screen bg-blue-900 flex min-h-screen">
+<div class="w-full bg-blue-900 flex min-h-screen">
     <aside class="w-1/4 h-full bg-blue-900 grid">
         <%= render 'layouts/dashboard/side_nav' %>
     </aside>
     <div class="w-full px-4 min-h-full bg-gray-100">
-        <%= render 'layouts/dashboard/content', obj: current_user.properties.for_sale.available %>
-               
+        <div class="grid grid-cols-5 place-items-center justify-items-start gap-4 shadow-xl py-3 bg-white capitalize font-semibold text-blue-700 my-2">
+            <div></div>
+            <div class="text-center">name</div>
+            <div>address</div>
+            <div>price</div>
+            <div>actions</div>
+        </div>
+        <%= render 'layouts/dashboard/content', obj: current_user.properties.for_sale.available %>  
     </div>
 </div>

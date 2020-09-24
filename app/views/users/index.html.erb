@@ -5,7 +5,7 @@
         <div class="grid justify-items-center p-3">
           <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" if user.company_logo.attached? %>
           <div class="text-lg font-bold"><%= user.company_name %></div>
-          <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.count, "property") if user.properties %></div>
+          <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.available.count, "property") if user.properties %></div>
           <div class="flex space-x-4 border-t-2 border-teal-700">
             <div class="justify-self-center capitalize border border-teal-700 text-teal-700 my-2 font-semibold p-2 rounded-lg text-center"><%= pluralize(user.properties.for_rent.count, "rental") if user.properties %></div>
             <div class="justify-self-center capitalize bg-teal-700 text-white font-semibold my-2 p-2 rounded-lg text-center"><%= user.properties.for_sale.count if user.properties %> for sale</div>
@@ -18,7 +18,7 @@
         <div class="grid justify-items-center p-3">
           <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" if user.company_logo.attached? %>
           <div class="text-lg font-bold"><%= user.company_name %></div>
-          <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.count, "property") if user.properties %></div>
+          <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.available.count, "property") if user.properties %></div>
           <div class="flex space-x-4 border-t-2 border-teal-700">
             <div class="justify-self-center capitalize border border-teal-700 text-teal-700 my-2 font-semibold p-2 rounded-lg text-center"><%= pluralize(user.properties.for_rent.count, "rental") if user.properties %></div>
             <div class="justify-self-center capitalize bg-teal-700 text-white font-semibold my-2 p-2 rounded-lg text-center"><%= user.properties.for_sale.count if user.properties %> for sale</div>
@@ -31,7 +31,7 @@
         <div class="grid justify-items-center p-3">
           <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" if user.company_logo.attached? %>
           <div class="text-lg font-bold"><%= user.company_name %></div>
-          <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.count, "property") if user.properties %></div>
+          <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.available.count, "property") if user.properties %></div>
           <div class="flex space-x-4 border-t-2 border-teal-700">
             <div class="justify-self-center capitalize border border-teal-700 text-teal-700 my-2 font-semibold p-2 rounded-lg text-center"><%= pluralize(user.properties.for_rent.count, "rental") if user.properties %></div>
             <div class="justify-self-center capitalize bg-teal-700 text-white font-semibold my-2 p-2 rounded-lg text-center"><%= user.properties.for_sale.count if user.properties %> for sale</div>
@@ -44,7 +44,7 @@
         <div class="grid justify-items-center p-3">
           <%= image_tag user.company_logo, class:"h-32 w-32 object-cover object-center" if user.company_logo.attached? %>
           <div class="text-lg font-bold"><%= user.company_name %></div>
-          <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.count, "property") if user.properties %></div>
+          <div class="justify-self-center capitalize my-1"><%= pluralize(user.properties.available.count, "property") if user.properties %></div>
           <div class="flex space-x-4 border-t-2 border-teal-700">
             <div class="justify-self-center capitalize border border-teal-700 text-teal-700 my-2 font-semibold p-2 rounded-lg text-center"><%= pluralize(user.properties.for_rent.count, "rental") if user.properties %></div>
             <div class="justify-self-center capitalize bg-teal-700 text-white font-semibold my-2 p-2 rounded-lg text-center"><%= user.properties.for_sale.count if user.properties %> for sale</div>

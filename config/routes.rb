@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'dashboard/available_listings'
   get 'dashboard/rentals_listings'
   get 'dashboard/for_sale_listings'
-  get 'properties' => "properties#index", as: 'all_property'
+  get 'properties' => "properties#index", as: 'all_properties'
   get 'properties/:id', controller: 'properties', action: :show, as: 'show_property'
   get 'dashboard/for_sale_listings'
 

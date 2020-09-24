@@ -13,16 +13,16 @@
     <%= link_to 'rental properties', home_rentals_path, class:"p-6 hover:shadow-2xl border border-gray-200 text-center justify-self-stretch text-md capitalize font-bold text-teal-700" %>
     <%= link_to 'buy properties', home_property_on_sale_path, class:"p-6 hover:shadow-2xl border border-gray-200 text-center justify-self-stretch text-md capitalize font-bold text-teal-700" %>
     <%= link_to 'real estate agents', users_path, class:"p-6 hover:shadow-2xl border border-gray-200 text-center justify-self-stretch text-md capitalize font-bold text-teal-700" %>
-    <%= link_to 'looking to sell/rent?', new_user_registration_path, class:"p-6 hover:shadow-2xl border border-gray-200 text-center justify-self-stretch text-md capitalize font-bold text-teal-700" %>
+    <%= link_to 'looking to sell/rent?', new_property_path, class:"p-6 hover:shadow-2xl border border-gray-200 text-center justify-self-stretch text-md capitalize font-bold text-teal-700" %>
     </div>
 </div>
 <div class="px-24 py-4">
     <div class="flex justify-center items-center">
         <div class="py-3 text-center text-2xl capitalize flex-grow font-bold text-gray-700">all properties</div>
-        <%= link_to 'view all properties', properties_path, class:"text-right capitalize" %>
+        <%= link_to 'view all properties', all_properties_path, class:"text-right capitalize" %>
     </div>
     <div class="grid grid-cols-4 gap-4 py-2">
-        <% Property.last(4).each do |property| %>
+        <% Property.available.last(4).each do |property| %>
             <div class="shadow-2xl rounded-lg capitalize text-sm">
                 <%= link_to show_property_url(property) do %>
                     <div class="h-40 w-full">
@@ -43,11 +43,11 @@
                         <%= property.address %><br>
                         </div>
                         <div class="text-teal-700 font-bold whitespace-normal">
-                            <% if property.for_sale? %>
-                                <div>contact agent</div>
-                            <% else %>
-                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
-                            <% end %>
+                                <% if property.for_sale? %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>                        
+                                <% else %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                <% end %>
                         </div>
                     </div>
                 <% end %>
@@ -61,7 +61,7 @@
         <%= link_to 'view all rental properties', home_rentals_path, class:"text-right capitalize" %>
     </div>
     <div class="grid grid-cols-4 gap-4 py-2">
-        <% Property.for_rent.last(4).each do |property| %>
+        <% Property.for_rent.available.last(4).each do |property| %>
             <div class="shadow-2xl rounded-lg capitalize text-sm border">
                 <%= link_to show_property_url(property) do %>
                     <div class="h-40 w-full">
@@ -82,11 +82,11 @@
                         <%= property.address %><br>
                         </div>
                         <div class="text-teal-700 font-bold whitespace-normal">
-                            <% if property.for_sale? %>
-                                <div>contact agent</div>
-                            <% else %>
-                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
-                            <% end %>
+                                <% if property.for_sale? %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>                        
+                                <% else %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                <% end %>
                         </div>
                     </div>
                 <% end %>
@@ -100,7 +100,7 @@
         <%= link_to 'view all properties for sale', home_property_on_sale_path, class:"text-right capitalize" %>
     </div>
     <div class="grid grid-cols-4 gap-4 py-2">
-        <% Property.for_sale.last(4).each do |property| %>
+        <% Property.for_sale.available.last(4).each do |property| %>
             <div class="shadow-2xl rounded-lg capitalize text-sm">
                 <%= link_to show_property_url(property) do %>
                     <div class="h-40 w-full">
@@ -121,11 +121,11 @@
                         <%= property.address %><br>
                         </div>
                         <div class="text-teal-700 font-bold whitespace-normal">
-                            <% if property.for_sale? %>
-                                <div>contact agent</div>
-                            <% else %>
-                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
-                            <% end %>
+                                <% if property.for_sale? %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>                        
+                                <% else %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                <% end %>
                         </div>
                     </div>
                 <% end %>

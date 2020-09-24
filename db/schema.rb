@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_21_092900) do
+ActiveRecord::Schema.define(version: 2020_09_24_072845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_09_21_092900) do
     t.integer "bathrooms"
     t.string "description"
     t.integer "parking_space", default: 0
+    t.string "property_images"
   end
 
   create_table "rentors", force: :cascade do |t|

@@ -53,11 +53,15 @@
     <%= form.file_field :property_cover_photo, class:"my-2 border mx-5 p-1" %>
     </div>
     <div class="px-5">
+      <%= form.label :property_images %> Link<br>
+    <%= form.text_field :property_images, class:"my-2 border p-1 mx-5 w-full", placeholder:"paste your google photos link here" %>
+    </div>
+    <div class="px-5">
       <%= form.label :description %><br>
     <%= form.text_area :description, class:"my-2 border p-1 mx-5 w-full h-40" %>
     </div>
     <div class="px-5 grid justify-items-center">
-      <%= form.submit "create post", disable_with: 'Submiting...', class:"font-medium text-lg bg-teal-700 text-white p-3 capitalize" %>
+      <%= form.submit "post property", disable_with: 'Submiting...', class:"font-medium text-lg bg-teal-700 text-white p-3 capitalize" %>
     </div>
   </div>
 <% end %>
