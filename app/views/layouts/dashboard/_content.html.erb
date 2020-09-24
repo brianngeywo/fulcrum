@@ -1,6 +1,6 @@
 <% obj.each do |property| %>
         <div class="w-full py-2 px-2">
-            <div class="grid grid-cols-5 bg-white border text-sm">
+            <div class="grid grid-cols-6 bg-white border text-sm">
                 <div class="h-16 w-16">
                     <%= image_tag property.property_cover_photo , class: "h-16 w-16 object-cover object-center" if property.property_cover_photo.attached? %>
                 </div>
@@ -17,6 +17,7 @@
                             <%= property.price >= 0? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>/month                        
                     <% end %>
                 </div>
+                <div><%= link_to "view property", property, :target => '_blank' %></div>
                 <div><%= link_to "delete", property, :method => :delete %></div>
             </div>
         </div>

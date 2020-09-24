@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :set_property, only: [:show]
 
   # GET /properties
   # GET /properties.json
@@ -10,6 +10,7 @@ class PropertiesController < ApplicationController
   # GET /properties/1
   # GET /properties/1.json
   def show
+    @property = Property.find(params[:id])
     @agent = @property.user
     @agent_properties = Property.where(user_id: @agent.id).where.not(id: @property.id)
   end

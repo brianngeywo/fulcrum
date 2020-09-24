@@ -3,14 +3,13 @@ Rails.application.routes.draw do
   get 'dashboard/available_listings'
   get 'dashboard/rentals_listings'
   get 'dashboard/for_sale_listings'
-  get 'properties' => "properties#index"
-  get 'properties/:id' => "properties#show"
+  get 'properties' => "properties#index", as: 'all_property'
+  get 'properties/:id', controller: 'properties', action: :show, as: 'show_property'
   get 'dashboard/for_sale_listings'
 
   scope module: 'dashboard', path: 'dashboard'  do
     resources :properties
   end
-  post 'properties', controller: 'dashboard/properties', action: :create
   devise_for :users
   resources :users, only: [:index, :show] do
     match :make_properties, :via => [:get]

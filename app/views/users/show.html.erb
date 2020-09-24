@@ -33,7 +33,7 @@
         <div class="py-4 px-6">
                 <% @properties.available.each do |property| %>
                     <div class="shadow-lg rounded-r-lg capitalize text-sm my-4 border h-48">
-                        <%= link_to property do %>
+                        <%= link_to show_property_url(property) do %>
                             <div class="flex h-48 bg-gra-100">
                                 <div class="h-48 w-56">
                                     <%= image_tag property.property_cover_photo , class: "h-full w-full object-cover object-center" if property.property_cover_photo.present? %>

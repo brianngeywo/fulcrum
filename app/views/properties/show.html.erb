@@ -17,14 +17,9 @@
                 <% if @property.for_sale? %>
                     <div clas="text-gray-700 capitalize font-semibold">call <%= @property.user.country_code %> <%= @property.user.phone_number %> </div>
                 <% else %>
-                    
-                    <% if @property.price.to_i > 0 %>
-                        <%= @property.price ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>/month                        
-                    <% end %>
-
+                        <%= @property.price ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>/month
                 <% end %>
                 <div class="text-gray-700"><%= @property.address %></div>
-                
             </div>
             <div class="bg-gray-300 flex space-x-4 p-3 capitalize rounded-lg">
                 <div class="grid justify-items-center">
@@ -47,7 +42,7 @@
                 <% if @property.nearbys.available.present? %>
                     <% @property.nearbys.available.last(3).each do |property| %>
                                 <div class="shadow-2xl rounded-lg capitalize text-sm">
-                                    <%= link_to property do %>
+                                    <%= link_to show_property_url(property) do %>
                                         <div class="h-40 w-full">
                                             <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                                         </div>

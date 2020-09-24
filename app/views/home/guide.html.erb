@@ -24,7 +24,7 @@
     <div class="grid grid-cols-4 gap-4 py-2">
         <% Property.last(4).each do |property| %>
             <div class="shadow-2xl rounded-lg capitalize text-sm">
-                <%= link_to property do %>
+                <%= link_to show_property_url(property) do %>
                     <div class="h-40 w-full">
                         <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                     </div>
@@ -63,7 +63,7 @@
     <div class="grid grid-cols-4 gap-4 py-2">
         <% Property.for_rent.last(4).each do |property| %>
             <div class="shadow-2xl rounded-lg capitalize text-sm border">
-                <%= link_to property do %>
+                <%= link_to show_property_url(property) do %>
                     <div class="h-40 w-full">
                         <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                     </div>
@@ -102,7 +102,7 @@
     <div class="grid grid-cols-4 gap-4 py-2">
         <% Property.for_sale.last(4).each do |property| %>
             <div class="shadow-2xl rounded-lg capitalize text-sm">
-                <%= link_to property do %>
+                <%= link_to show_property_url(property) do %>
                     <div class="h-40 w-full">
                         <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                     </div>
