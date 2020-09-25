@@ -1,26 +1,40 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="flex">
+  <div class="w-2/5 flex flex-col items-center py-6">
+    <div class="capitalize font-bold text-gray-800 text-xl my-2">login to fulcrum homes</div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="grid place-items-center">
+        <div class="my-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email address", class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
+        </div>
+<i class="fab fa-twitter fa-2x"></i>
+        <div class="my-3">
+          <%= f.password_field :password, placeholder: "Password", class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
+        </div>
+          <button class="rounded-sm bg-green-700 text-white py-2 my-2 w-full text-center capitalize antialiased" type="submit">login</button>
+        
+      </div>
+        <div class="flex text-xs space-x-4 text-teal-700 font-bold justify-center my-2">
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+          <% end %>
+          <% if devise_mapping.rememberable? %>
+            <div class="text-gray-600 font-normal">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>          
+        </div>
+    <% end %>
+    <div class="flex space-x-2 justify-center text-teal-700 font-bold my-3">
+      <div class="capitalize font-bold text-gray-700">dont have an account?</div>
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+      <% end %>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <%# <%= render "devise/shared/links" %>
   </div>
-<% end %>
+  <div class="min-h-screen w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1591476476996-02175548e394?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80');"></div>
+</div>
 
-<%= render "devise/shared/links" %>
+

@@ -1,90 +1,75 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="m-12 border flex">
+  <div class="w-3/5 flex flex-col items-center bg-gray-300 py-6">
+    <div class="capitalize font-bold text-gray-800 text-xl my-2">sign up to fulcrum homes</div>
+     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true%>
-  </div>
+      <div class="grid place-items-center">
+        <div class="my-3">          
+          <div class="field">
+            <%= f.label :first_name %><br />
+            <%= f.text_field :first_name, autofocus: true, class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
+          </div>
+        </div>
 
-    <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true%>
-  </div>
+        <div class="my-3"> 
+            <div class="field">
+              <%= f.label :last_name %><br />
+              <%= f.text_field :last_name, autofocus: true, class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
+            </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :country_code %><br />
-    <%= f.text_field :country_code, autofocus: true%>
-  </div>
-  
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.phone_field :phone_number, autofocus: true%>
-  </div>
+        <div class="my-3"> 
+            <div class="field">
+              <%= f.label :phone_number %><br />
+              <%= f.phone_field :phone_number, autofocus: true, class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
+            </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :identity_card_front %><br />
-    <%= f.file_field :identity_card_front %>
-  </div>
+        <div class="my-3"> 
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
+            </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :identity_card_back %><br />
-    <%= f.file_field :identity_card_back %>
-  </div>
+        <div class="my-3"> 
+            <div class="field">
+              <%= f.label :company_name %><br />
+              <%= f.text_field :company_name, autofocus: true, class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
+            </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :company_name %><br />
-    <%= f.text_field :company_name, autofocus: true%>
-  </div>
+        <div class="my-3"> 
+            <div class="field">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "new-password", class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
+            </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :company_logo %><br />
-    <%= f.file_field :company_logo %>
-  </div>
+        <div class="my-3"> 
+            <div class="field">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400"%>
+            </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :business_reg_certificate %><br />
-    <%= f.file_field :business_reg_certificate %>
+          <button class="rounded-sm bg-green-700 text-white py-2 my-2 w-full text-center capitalize antialiased" type="submit">sign up</button>
+            <div class="flex space-x-2 justify-center text-teal-700 font-bold my-3">
+      <div class="capitalize font-bold text-gray-700">already have an account?</div>
+        <%- if controller_name != 'sessions' %>
+          <%= link_to "Log in", new_session_path(resource_name) %><br />
+        <% end %>
+    </div>
+      </div>
+    <%# <%= render "devise/shared/links" %>
   </div>
+  <div class="min-h-screen w-full bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1591476476996-02175548e394?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80');"></div>
+</div>
 
-  <div class="field">
-    <%= f.label :company_offices %><br />
-    <%= f.text_field :company_offices, autofocus: true%>
-  </div>
-
-  <div class="field">
-    <%= f.label :position_in_company %><br />
-    <%= f.text_field :position_in_company, autofocus: true%>
-  </div>
-
-  <div class="field">
-    <%= f.label :company_phone_number1 %><br />
-    <%= f.text_field :company_phone_number1, autofocus: true%>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
