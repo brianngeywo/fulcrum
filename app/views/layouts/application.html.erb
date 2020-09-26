@@ -8,6 +8,8 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <link rel="stylesheet" type="text/css" href="trix.css">
+  <script type="text/javascript" src="trix.js"></script>
 
 <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_url "favicon_io/apple-touch-icon.png"%>">
 <link rel="icon" type="image/png" sizes="32x32" href="<%= asset_url "favicon_io/favicon-32x32.png" %>">
@@ -38,7 +40,7 @@
       <div class="justify-self-center text-center font-extrabold capitalize">myfulcrumlogo.com</div>
       <div class="flex-grow"></div>
       <div>safety tips</div>
-      <div>talk to us</div>
+      <%= link_to 'talk to us', talk_to_us_path %>
       <div>careers</div>
     </div>
   </body>

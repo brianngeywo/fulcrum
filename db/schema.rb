@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_24_072845) do
+ActiveRecord::Schema.define(version: 2020_09_26_105641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,11 +57,11 @@ ActiveRecord::Schema.define(version: 2020_09_24_072845) do
     t.float "latitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.integer "bathrooms"
-    t.string "description"
     t.integer "parking_space", default: 0
     t.string "property_images"
+    t.string "name"
+    t.integer "bathrooms", default: 0
+    t.string "description"
   end
 
   create_table "rentors", force: :cascade do |t|

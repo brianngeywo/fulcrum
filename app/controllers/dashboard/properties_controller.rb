@@ -34,7 +34,7 @@ module Dashboard
       respond_to do |format|
         if @property.save
           format.html { redirect_to @property, notice: "Property was successfully created." }
-          format.json { render :show, status: :created, location: dashboard_path(@property) }
+          format.json { render :show, status: :created, location: @property }
         else
           format.html { render :new }
           format.json { render json: @property.errors, status: :unprocessable_entity }

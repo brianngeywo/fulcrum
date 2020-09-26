@@ -1,12 +1,11 @@
 <div class="flex">
   <div class="w-2/5 flex flex-col items-center py-6">
-    <div class="capitalize font-bold text-gray-800 text-xl my-2">login to fulcrum homes</div>
+    <div class="capitalize font-bold text-gray-800 text-xl my-2">welcome back!</div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="grid place-items-center">
         <div class="my-3">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email address", class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
         </div>
-<i class="fab fa-twitter fa-2x"></i>
         <div class="my-3">
           <%= f.password_field :password, placeholder: "Password", class:"p-2 rounded-lg border border-gray-400 placeholder-gray-400" %>
         </div>

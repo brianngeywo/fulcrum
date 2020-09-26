@@ -21,5 +21,7 @@ Rails.application.routes.draw do
   root to: 'home#guide'
   get "home/rentals"
   get "home/property_on_sale"
+  get "home/about", as: 'get_to_know_us'
+  get "home/contact", as: 'talk_to_us'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

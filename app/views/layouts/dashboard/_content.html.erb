@@ -17,7 +17,7 @@
                             <%= property.price >= 0? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>/month                        
                     <% end %>
                 </div>
-                <div class=" place-self-center justify-self-start"><%= link_to "view property", property %></div>
+                <div class=" place-self-center justify-self-start text-blue-700"><%= link_to "view property", property %></div>
             </div>
         </div>
 <% end %>

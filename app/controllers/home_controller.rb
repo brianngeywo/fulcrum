@@ -7,4 +7,8 @@ class HomeController < ApplicationController
   def property_on_sale
     @properties = Property.for_sale
   end
+  def home
+  end
+  def contact
+  end
 end

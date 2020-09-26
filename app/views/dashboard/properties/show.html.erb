@@ -1,7 +1,7 @@
 <div class="w-full bg-blue-900 flex min-h-screen">
-    <aside class="w-1/4 h-full bg-blue-900 grid">
+    <div class="w-1/4 h-full bg-blue-900 grid">
         <%= render 'layouts/dashboard/side_nav' %>
-    </aside>
+    </div>
     <div class="w-full min-h-full px-4 bg-gray-100">
       <div class="pb-2">
         <%= image_tag @property.property_cover_photo, class:"w-full h-40 object-cover object-center" if @property.property_cover_photo.present? %>

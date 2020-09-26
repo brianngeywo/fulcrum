@@ -15,9 +15,9 @@
                   </div>
                   <div class="text-teal-700 font-bold whitespace-normal">
                     <% if property.for_sale? %>
-                        <div>contact agent</div>
+                        <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
                     <% else %>
-                        <%= property.price.to_i > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                        <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
                     <% end %>
                   </div>
               </div>
