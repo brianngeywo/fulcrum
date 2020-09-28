@@ -37,6 +37,10 @@
             <i class="fa fa-images mr-3 text-teal-700"></i>
             <%= link_to 'click here to view photos', "#{ @property.property_images }", :target => '_blank', class:"text-blue-700 font-medium" %> 
         </div>
+        <div class="flex capitalize">
+            <div class="mr-3 text-teal-700 capitalize font-semibold">posted by:</div>
+            <%= link_to @property.user.company_name, user_path(@property.user) %>
+        </div>
     </div>
     <div class="bg-white px-24 py-4 shadow-2xl my-4">
         <div class="text-5xl font-semibold capitalize text-center my-3 text-gray-700">property description</div>

@@ -6,6 +6,11 @@
                 <div class="text-center">name</div>
                 <div>actions</div>
             </div>
+            <div class="grid grid-cols-3 place-items-center justify-items-start gap-4 shadow-xl py-3 capitalize font-semibold text-white my-2">
+                <div></div>
+                <div></div>
+                <div class="p-3 bg-green-700 rounded-lg"><%= link_to 'add property', new_property_path %></div>
+            </div>
             <%= render 'layouts/dashboard/mobile_content', obj: current_user.properties.available %>
         </div>
     </div>

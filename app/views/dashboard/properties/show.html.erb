@@ -1,67 +1,71 @@
-<div class="w-full bg-blue-900 flex min-h-screen">
-    <div class="w-1/4 h-full bg-blue-900 grid">
-        <%= render 'layouts/dashboard/side_nav' %>
-    </div>
-    <div class="w-full min-h-full px-4 bg-gray-100">
-      <div class="pb-2">
-      <div class="bg-black">
-        <%= image_tag @property.property_cover_photo, class:"w-full h-40 object-contain object-center" if @property.property_cover_photo.present? %>
+<% if @browser.device.mobile? %>
+    <%= render 'mobile.show' %>
+    <% else %>
+  <div class="w-full bg-blue-900 flex min-h-screen">
+      <div class="w-1/4 h-full bg-blue-900 grid">
+          <%= render 'layouts/dashboard/side_nav' %>
       </div>
+      <div class="w-full min-h-full px-4 bg-gray-100">
+        <div class="pb-2">
+        <div class="bg-black">
+          <%= image_tag @property.property_cover_photo, class:"w-full h-40 object-contain object-center" if @property.property_cover_photo.present? %>
+        </div>
 
-        <div class="flex border rounded-lg capitalize my-3">
-          <div class="w-40 bg-gray-400 px-4 rounded-l-lg">
-            <div class="border-b font-normal py-2">name</div>
-            <div class="border-b font-normal py-2">status</div>
-            <div class="border-b font-normal py-2">availability</div>
-            <div class="border-b font-normal py-2">price</div>
-            <div class="border-b font-normal py-2">address</div>
-            <div class="border-b font-normal py-2">bedrooms</div>
-            <div class="border-b font-normal py-2">bathrooms</div>
-            <div class="border-b font-normal py-2">parking space</div>
-            <div class="border-b font-normal py-2">photos</div>
+          <div class="flex border rounded-lg capitalize my-3">
+            <div class="w-40 bg-gray-400 px-4 rounded-l-lg">
+              <div class="border-b font-normal py-2">name</div>
+              <div class="border-b font-normal py-2">status</div>
+              <div class="border-b font-normal py-2">availability</div>
+              <div class="border-b font-normal py-2">price</div>
+              <div class="border-b font-normal py-2">address</div>
+              <div class="border-b font-normal py-2">bedrooms</div>
+              <div class="border-b font-normal py-2">bathrooms</div>
+              <div class="border-b font-normal py-2">parking space</div>
+              <div class="border-b font-normal py-2">photos</div>
+            </div>
+            <div class="w-full px-3">
+              <div class="border-b font-normal py-2">
+                <%= @property.name %><br>
+              </div>
+              <div class="border-b font-normal py-2">
+                <% if @property.for_sale? %>
+                    <div>for sale </div>
+                <% else %>
+                    <div>for rent </div>
+                <% end %>
+              </div>
+              <div class="border-b font-normal py-2">
+                <%= @property.status %>
+              </div>
+              <div class="border-b font-normal py-2">
+                <% if @property.for_sale? %>
+                    <%= @property.price > 0 ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>
+                <% else %>
+                    <%= @property.price > 0 ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                <% end %>
+              </div>
+              <div class="border-b font-normal py-2">
+                <%= @property.address %><br>
+              </div>
+              <div class="border-b font-normal py-2">
+                <%= @property.bedrooms %><br>
+              </div>
+              <div class="border-b font-normal py-2">
+                <%= @property.bathrooms %><br>
+              </div>
+              <div class="border-b font-normal py-2">
+                <%= @property.parking_space %><br>
+              </div>
+              <div class="border-b font-normal py-2">
+                <%= link_to 'click here to view photos', "#{ @property.property_images }", :target => '_blank', class:"text-blue-700 font-medium" %>
+              </div>
+            </div>
+          </div> 
+          <div class="flex space-x-12 my-3 capitalize font-normal">       
+          <%= link_to 'edit property', edit_property_path, class:"border p-2 rounded-lg bg-green-700 text-white" %>
+          <%= link_to 'delete property', property_path(@property), method: :delete, class:"border p-2 rounded-lg bg-red-700 text-white" %>
           </div>
-          <div class="w-full px-3">
-            <div class="border-b font-normal py-2">
-              <%= @property.name %><br>
-            </div>
-            <div class="border-b font-normal py-2">
-              <% if @property.for_sale? %>
-                  <div>for sale </div>
-              <% else %>
-                  <div>for rent </div>
-              <% end %>
-            </div>
-            <div class="border-b font-normal py-2">
-              <%= @property.status %>
-            </div>
-            <div class="border-b font-normal py-2">
-              <% if @property.for_sale? %>
-                  <%= @property.price > 0 ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>
-              <% else %>
-                  <%= @property.price > 0 ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for rent" %>/month
-              <% end %>
-            </div>
-            <div class="border-b font-normal py-2">
-              <%= @property.address %><br>
-            </div>
-            <div class="border-b font-normal py-2">
-              <%= @property.bedrooms %><br>
-            </div>
-            <div class="border-b font-normal py-2">
-              <%= @property.bathrooms %><br>
-            </div>
-            <div class="border-b font-normal py-2">
-              <%= @property.parking_space %><br>
-            </div>
-            <div class="border-b font-normal py-2">
-              <%= link_to 'click here to view photos', "#{ @property.property_images }", :target => '_blank', class:"text-blue-700 font-medium" %>
-            </div>
-          </div>
-        </div> 
-        <div class="flex space-x-12 my-3 capitalize font-normal">       
-        <%= link_to 'edit property', edit_property_path, class:"border p-2 rounded-lg bg-green-700 text-white" %>
-        <%= link_to 'delete property', property_path(@property), method: :delete, class:"border p-2 rounded-lg bg-red-700 text-white" %>
         </div>
       </div>
-    </div>
-</div>
+  </div>
+<% end %>

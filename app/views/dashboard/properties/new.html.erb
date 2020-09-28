@@ -1,11 +1,15 @@
-<div class="w-full bg-blue-900 flex min-h-screen">
-    <aside class="w-1/4 h-full bg-blue-900 grid">
-        <%= render 'layouts/dashboard/side_nav' %>
-    </aside>
-    <div class="w-full px-4 min-h-full bg-gray-100">
-       <div class="px-24 bg-gray-200 py-4">
-            <h1 class="text-teal-700 py-2 capitalize font-semibold text-xl">New Property</h1>
-            <%= render 'form', property: @property %>
+<% if @browser.device.mobile? %>
+    <%= render 'mobile.new' %>
+    <% else %>
+    <div class="w-full bg-blue-900 flex min-h-screen">
+        <aside class="w-1/4 h-full bg-blue-900 grid">
+            <%= render 'layouts/dashboard/side_nav' %>
+        </aside>
+        <div class="w-full px-4 min-h-full bg-gray-100">
+        <div class="px-24 bg-gray-200 py-4">
+                <h1 class="text-teal-700 py-2 capitalize font-semibold text-xl">New Property</h1>
+                <%= render 'form', property: @property %>
+            </div>
         </div>
     </div>
-</div>
+<% end %>
