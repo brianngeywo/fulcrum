@@ -1,0 +1,32 @@
+<div class="bg-white my-3">
+        </div>
+    <div class="my-3 min-h-screen">
+        <% @properties.for_sale.available.each do |property| %>
+            <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                <%= link_to show_property_url(property) do %>
+                    <div class="w-full">
+                        <%= image_tag property.property_cover_photo , class: "mobile-property-show-image w-full object-cover object-center" if property.property_cover_photo.attached? %>
+                    </div>
+                    <div class="py-3 px-24">
+                        <div class="font-bold">
+                        <%= property.name %><br>
+                        </div>
+                        <div class="text-gray-700">
+                        <%= property.address %><br>
+                        </div>
+                        <div class="text-teal-700 font-bold whitespace-normal">
+                            <% if property.for_sale? %>
+                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
+                            <% else %>
+                                <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</div>
+<div class="bottom-0 sticky">
+    <%= render 'navigation/mobile/footer' %>
+</div>

@@ -1,97 +1,104 @@
-<p id="notice"><%= notice %></p>
-      <%= image_tag @property.property_cover_photo, class:"w-full h-56 object-cover object-center" if @property.property_cover_photo.present? %>
-<div class="flex">
-    <div class="w-full px-2">
-        <div class="px-24 my-4">
-        <div class="text-gray-700 capitalize font-semibold flex items-center">
-            <div class="flex-grow">
-                <div class="text-teal-700 text-3xl font-bold"><%= @property.name %></div>
-                        <% if @property.for_sale? %>
-                            <div>for sale </div>
-                        <% else %>
-                            <div>for rent </div>
-                        <% end %>            
-                    </div>
-                <%= link_to 'click here to view photos', "#{ @property.property_images }", :target => '_blank', class:"text-blue-700 font-medium" %> 
-            </div>       
-        </div>
-        <div class=" flex ml-24 py-4  border-t-2">
-            <div class="flex-grow py-3 text-md capitalize">
-                <% if @property.for_sale? %>
-                    <div class="text-gray-700 capitalize font-semibold"><%= @property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %></div>
-                <% else %>
-                        <%= @property.price ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>/month
-                <% end %>
-                <div class="text-gray-700"><%= @property.address %></div>
+<% if @browser.device.mobile? %>
+    <%= render 'mobile.property.show' %>
+    <% else %>
+    <p id="notice"><%= notice %></p>
+    <div class="bg-black">
+        <%= image_tag @property.property_cover_photo, class:"w-full h-56 object-contain object-center" if @property.property_cover_photo.present? %>    
+    </div>
+    <div class="flex">
+        <div class="w-full px-2">
+            <div class="px-24 my-4">
+            <div class="text-gray-700 capitalize font-semibold flex items-center">
+                <div class="flex-grow">
+                    <div class="text-teal-700 text-3xl font-bold"><%= @property.name %></div>
+                            <% if @property.for_sale? %>
+                                <div>for sale </div>
+                            <% else %>
+                                <div>for rent </div>
+                            <% end %>            
+                        </div>
+                    <%= link_to 'click here to view photos', "#{ @property.property_images }", :target => '_blank', class:"text-blue-700 font-medium" %> 
+                </div>       
             </div>
-            <div class="bg-gray-300 flex space-x-12 p-3 px-6 capitalize rounded-lg">
-                <div class="grid justify-items-center">
-                    <i class="fa fa-bed"></i>
-                    <div> <%= @property.bedrooms %> </div>
+            <div class=" flex ml-24 py-4  border-t-2">
+                <div class="flex-grow py-3 text-md capitalize">
+                    <% if @property.for_sale? %>
+                        <div class="text-gray-700 capitalize font-semibold"><%= @property.price > 0 ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for rent" %></div>
+                    <% else %>
+                            <%= @property.price ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>/month
+                    <% end %>
+                    <div class="text-gray-700"><%= @property.address %></div>
                 </div>
-                <div class="grid justify-items-center">
-                    <i class="fa fa-bath"></i>
-                    <div> <%= @property.bathrooms %> </div>
-                </div>
-                <div class="grid justify-items-center"v>
-                    <i class="fa fa-car"></i>
-                    <div> <%= @property.parking_space %> </div>
-                </div>
-            </div>            
-        </div>
-        <div class="ml-24 py-4 border-t-2">
-            <div class="text-2xl font-semibold capitalize text-gray-700">property description</div>
-            <div class="times text-sm"> <%= @property.description %> </div>
-        </div>
-        <div class="ml-24 py-4 border-t-2">
-            <div class="text-2xl text-center capitalize font-bold text-gray-600 pb-2">nearby property</div>
-            <div class="grid grid-rows-flow grid-cols-3 gap-3">
-                <% if @property.nearbys.available.present? %>
-                    <% @property.nearbys.available.last(3).each do |property| %>
-                                <div class="shadow-2xl rounded-lg capitalize text-sm">
-                                    <%= link_to show_property_url(property) do %>
-                                        <div class="h-40 w-full">
-                                            <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
-                                        </div>
-                                        <div class="p-2 h-24">
-                                            <div class="font-bold">
-                                            <%= property.name %>
-                                                <div class="text-gray-700 text-xs font-medium">
-                                                    <%= property.distance.round(2) %> kms<br>
+                <div class="bg-gray-300 flex space-x-12 p-3 px-6 capitalize rounded-lg">
+                    <div class="grid justify-items-center">
+                        <i class="fa fa-bed"></i>
+                        <div> <%= @property.bedrooms %> </div>
+                    </div>
+                    <div class="grid justify-items-center">
+                        <i class="fa fa-bath"></i>
+                        <div> <%= @property.bathrooms %> </div>
+                    </div>
+                    <div class="grid justify-items-center"v>
+                        <i class="fa fa-car"></i>
+                        <div> <%= @property.parking_space %> </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="ml-24 py-4 border-t-2">
+                <div class="text-2xl font-semibold capitalize text-gray-700">property description</div>
+                <div class="times text-sm"> <%= @property.description %> </div>
+            </div>
+            <div class="ml-24 py-4 border-t-2">
+                <div class="text-2xl text-center capitalize font-bold text-gray-600 pb-2">nearby property</div>
+                <div class="grid grid-rows-flow grid-cols-3 gap-3">
+                    <% if @property.nearbys.available.present? %>
+                        <% @property.nearbys.available.last(3).each do |property| %>
+                                    <div class="shadow-2xl rounded-lg capitalize text-sm">
+                                        <%= link_to show_property_url(property) do %>
+                                            <div class="h-40 w-full">
+                                                <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
+                                            </div>
+                                            <div class="p-2 h-24">
+                                                <div class="font-bold">
+                                                <%= property.name %>
+                                                    <div class="text-gray-700 text-xs font-medium">
+                                                        <%= property.distance.round(2) %> kms<br>
+                                                    </div>
+                                                </div>
+                                                <div class="text-gray-700">
+                                                <%= property.address %><br>
+                                                </div>
+                                                <div class="text-teal-700 font-bold whitespace-normal">
+                                                    <% if property.for_sale? %>
+                                                        <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
+                                                    <% else %>
+                                                        <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                                    <% end %>
                                                 </div>
                                             </div>
-                                            <div class="text-gray-700">
-                                            <%= property.address %><br>
-                                            </div>
-                                            <div class="text-teal-700 font-bold whitespace-normal">
-                                                <% if property.for_sale? %>
-                                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
-                                                <% else %>
-                                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
-                                                <% end %>
-                                            </div>
-                                        </div>
-                                    <% end %>
-                                </div>
+                                        <% end %>
+                                    </div>
+                        <% end %>
                     <% end %>
-                <% end %>
+                </div>
+            </div>
+            <div class="ml-24 py-3 border-t-2">
+                <div class="text-2xl text-center capitalize font-bold text-gray-600">other available property by <%= @property.user.company_name %></div>
+                <br>
+                <%= render 'agent_properties' %>
+            </div>
+            <div class="px-24">
             </div>
         </div>
-        <div class="ml-24 py-3 border-t-2">
-            <div class="text-2xl text-center capitalize font-bold text-gray-600">other available property by <%= @property.user.company_name %></div>
-            <br>
-            <%= render 'agent_properties' %>
-        </div>
-        <div class="px-24">
-        </div>
-    </div>
-    <div class="w-2/5 px-4 bg-gray-100">
-        <div class="py-2 grid justify-items-center my-3 mx-6 shadow-2xl bg-white rounded-lg border" >
-            <%= image_tag @property.user.company_logo, class:"w-24 h-24 object-cover object-center justify-self-center" if @property.user.company_logo.attached? %>
-            <div class="text-teal-700 text-lg font-light capitalize my-2"><%= link_to @property.user.company_name, @property.user %></div>
-            <div class="font-semibold capitalize px-6">phone number</div>
-            <div class="capitalize px-6"><%= @property.user.company_phone_number1 %></div>
-            <div class="capitalize px-6"><%= @property.user.company_phone_number2 %></div>
+        <div class="w-2/5 px-4 bg-gray-100">
+            <div class="py-2 grid justify-items-center my-3 mx-6 shadow-2xl bg-white rounded-lg border" >
+                <%= image_tag @property.user.company_logo, class:"w-24 h-24 object-cover object-center justify-self-center" if @property.user.company_logo.attached? %>
+                <div class="text-teal-700 text-lg font-light capitalize my-2"><%= link_to @property.user.company_name, @property.user %></div>
+                <div class="font-semibold capitalize px-6">phone number</div>
+                <div class="capitalize px-6"><%= @property.user.company_phone_number1 %></div>
+                <div class="capitalize px-6"><%= @property.user.company_phone_number2 %></div>
+            </div>    
         </div>    
-    </div>    
-</div>
+    </div>
+
+<% end %>

@@ -1,0 +1,13 @@
+<% obj.each do |property| %>
+        <div class="w-full py-2 px-2 text-4xl">
+            <div class="grid grid-cols-3 bg-white shadow-xl gap-4">
+                <div class="h-40 w-40">
+                    <%= image_tag property.property_cover_photo , class: "h-40 w-40 object-cover object-center" if property.property_cover_photo.attached? %>
+                </div>
+                <div class="font-bold place-self-center justify-self-start">
+                  <%= property.name %><br>
+                </div>
+                <div class=" place-self-center justify-self-start text-blue-700"><%= link_to "view property", property %></div>
+            </div>
+        </div>
+<% end %>

@@ -1,35 +1,40 @@
-<div class="px-24 py-4">
-    <div class="grid grid-rows-flow grid-cols-4 gap-3">
-        <% @properties.available.each do |property| %>
-            <div class="shadow-2xl rounded-lg capitalize text-sm">
-                <%= link_to show_property_path(property) do %>
-                    <div class="h-40 w-full">
-                        <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
-                    </div>
-                    <div class="p-2 h-24">
-                        <div class="font-bold">
-                        <%= property.name %><br>
-                        </div>
-                            <div class="text-gray-700 text-xs">
-                                <% if property.for_sale? %>
-                                    <div>for sale</div>
-                                <% else %>
-                                    <div>for rent</div>
-                                <% end %>
+<% if @browser.device.mobile? %>
+    <%= render 'mobile.property.index' %>
+    <% else %>
+        <div class="px-24 py-4">
+            <div class="grid grid-rows-flow grid-cols-4 gap-3">
+                <% @properties.available.each do |property| %>
+                    <div class="shadow-2xl rounded-lg capitalize text-sm">
+                        <%= link_to show_property_path(property) do %>
+                            <div class="h-40 w-full">
+                                <%= image_tag property.property_cover_photo , class: " h-full w-full object-cover object-center" if property.property_cover_photo.attached? %>
                             </div>
-                        <div class="text-gray-700">
-                        <%= property.address %><br>
-                        </div>
-                        <div class="text-teal-700 font-bold whitespace-normal">
-                                <% if property.for_sale? %>
-                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>                        
-                                <% else %>
-                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
-                                <% end %>
-                        </div>
+                            <div class="p-2 h-24">
+                                <div class="font-bold">
+                                <%= property.name %><br>
+                                </div>
+                                <div class="text-gray-700 text-xs">
+                                    <% if property.for_sale? %>
+                                        <div>for sale</div>
+                                    <% else %>
+                                        <div>for rent</div>
+                                    <% end %>
+                                </div>
+                                <div class="text-gray-700">
+                                    <%= property.address %><br>
+                                </div>
+                                <div class="text-teal-700 font-bold whitespace-normal">
+                                    <% if property.for_sale? %>
+                                        <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>                        
+                                    <% else %>
+                                        <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                    <% end %>
+                                </div>
+                            </div>
+                        <% end %>
                     </div>
                 <% end %>
             </div>
-        <% end %>
-    </div>
-</div>
+        </div>
+<% end %>
+        

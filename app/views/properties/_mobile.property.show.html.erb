@@ -1,0 +1,113 @@
+<div class="bg-gray-100">
+    <%= render 'navigation/mobile/top_bar' %>
+
+    <div class="shadow-2xl bg-white">
+        <div class="bg-black">
+            <%= image_tag @property.property_cover_photo, class:"mobile-property-show-image w-full object-contain object-center" if @property.property_cover_photo.present? %>
+        </div>
+    </div>
+    <div class="font-bold text-teal-700 text-center capitalize text-6xl my-3"><%= @property.name %></div>
+    <div class="bg-white flex-col text-4xl px-24 space-y-8 my-4 shadow-2xl py-4">
+        <div class="font-bold text-gray-600 text-center text-5xl">Property info</div>
+        <div>  
+        <i class="fa fa-building mr-3 text-teal-700"></i>                          
+            <% if @property.for_sale? %>
+                for sale
+            <% else %>
+                for rent
+            <% end %> 
+        </div>
+        <div>
+            <i class="fa fa-building mr-3 text-teal-700"></i>                          
+            <%= @property.status %>
+        </div>
+        <div>
+            <i class="fa fa-tag mr-3 text-teal-700"></i> 
+            <% if @property.for_sale? %>
+                <%= @property.price > 0 ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for sale" %>
+            <% else %>
+                    <%= @property.price ? number_to_currency(@property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+            <% end %>
+        </div>
+        <div>
+            <i class="fa fa-map-marker-alt mr-3 text-teal-700"></i> 
+            <%= @property.address %>
+        </div>
+        <div>
+            <i class="fa fa-images mr-3 text-teal-700"></i>
+            <%= link_to 'click here to view photos', "#{ @property.property_images }", :target => '_blank', class:"text-blue-700 font-medium" %> 
+        </div>
+    </div>
+    <div class="bg-white px-24 py-4 shadow-2xl my-4">
+        <div class="text-5xl font-semibold capitalize text-center my-3 text-gray-700">property description</div>
+        <div class="times text-4xl"> <%= @property.description %> </div>
+    </div>
+    <div class="bg-white font-bold text-gray-600 text-center capitalize text-5xl my-8">other listings by <%= @property.user.company_name %></div>
+    <div class="bg-white my-3">
+        <% if @agent_properties.available.present? %>
+            <div class="my-3">
+                <% @agent_properties.available.last(3).each do |property| %>
+                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                    <%= link_to show_property_url(property) do %>
+                        <div class="w-full">
+                            <%= image_tag property.property_cover_photo , class: "mobile-property-show-image w-full object-cover object-center" if property.property_cover_photo.attached? %>
+                        </div>
+                        <div class="py-3 px-24">
+                            <div class="font-bold">
+                            <%= property.name %><br>
+                            </div>
+                            <div class="text-gray-700">
+                            <%= property.address %><br>
+                            </div>
+                            <div class="text-teal-700 font-bold whitespace-normal">
+                                <% if property.for_sale? %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
+                                <% else %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+    <div class="bg-white font-bold text-gray-600 text-center capitalize text-5xl my-8"> nearby properties </div>
+    <div class="bg-white my-3">
+        <% if @agent_properties.available.present? %>
+            <div class="my-3">
+                <% @property.nearbys.available.last(3).each do |property| %>
+                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                    <%= link_to show_property_url(property) do %>
+                        <div class="w-full">
+                            <%= image_tag property.property_cover_photo , class: "mobile-property-show-image w-full object-cover object-center" if property.property_cover_photo.attached? %>
+                        </div>
+                        <div class="py-3 px-24">
+                            <div class="font-bold">
+                                <%= property.name %><br>
+                                <div class="text-gray-700 text-4xl font-medium">
+                                    <%= property.distance.round(2) %> kms<br>
+                                </div>  
+                            </div>
+                            <div class="text-gray-700">
+                            <%= property.address %><br>
+                            </div>
+                            <div class="text-teal-700 font-bold whitespace-normal">
+                                <% if property.for_sale? %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
+                                <% else %>
+                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+    <div class="sticky bottom-0">
+        <%= render 'navigation/mobile/footer' %>
+    </div>
+</div>

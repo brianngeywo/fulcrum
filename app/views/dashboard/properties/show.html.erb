@@ -4,7 +4,10 @@
     </div>
     <div class="w-full min-h-full px-4 bg-gray-100">
       <div class="pb-2">
-        <%= image_tag @property.property_cover_photo, class:"w-full h-40 object-cover object-center" if @property.property_cover_photo.present? %>
+      <div class="bg-black">
+        <%= image_tag @property.property_cover_photo, class:"w-full h-40 object-contain object-center" if @property.property_cover_photo.present? %>
+      </div>
+
         <div class="flex border rounded-lg capitalize my-3">
           <div class="w-40 bg-gray-400 px-4 rounded-l-lg">
             <div class="border-b font-normal py-2">name</div>
