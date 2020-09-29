@@ -1,0 +1,41 @@
+<div class="flex min-h-screen bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1591476476996-02175548e394?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80');background-color: rgba(0,0,0,0.4);background-blend-mode: multiply;">
+  <div class="w-2/6 flex flex-col items-center py-6 text-5xl justify-center">
+    <div class="p-4 my-6 bg-green-700 text-white w-full rounded-r-full text-center font-medium capitalize">login</div>
+    <div class="p-4 my-6 text-white w-full rounded-r-full text-center font-medium capitalize">
+      <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+      <% end %>
+    </div>
+  </div>
+  <div class="rounded-l-lg w-full bg-cover bg-center ml-24 my-24 shadow-l shadow-2xl p-12 bg-white">
+    <div class="capitalize font-bold text-gray-800 text-5xl my-2">welcome back!</div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="grid place-items-center">
+        <div class="my-6">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email address", class:"bg-gray-200 p-2 rounded-lg border border-gray-400 placeholder-gray-400 text-4xl" %>
+        </div>
+        <div class="my-6">
+          <%= f.password_field :password, placeholder: "Password", class:"bg-gray-200 p-2 rounded-lg border border-gray-400 placeholder-gray-400 text-4xl" %>
+        </div>
+          <button class="rounded-sm bg-green-700 text-white py-2 my-6 w-full text-center capitalize antialiased text-4xl font-medium" type="submit">login</button>
+        
+      </div>
+        <div class="flex flex-col text-4xl text-teal-700 font-bold justify-center my-2">
+          <% if devise_mapping.rememberable? %>
+            <div class="text-gray-600 font-normal my-4">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>  
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+            <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+          <% end %>        
+        </div>
+    <% end %>
+    <%# <%= render "devise/shared/links" %>
+
+  </div>
+</div>
+<div class="bottom-0">
+    <%= render 'navigation/mobile/footer' %>
+</div>

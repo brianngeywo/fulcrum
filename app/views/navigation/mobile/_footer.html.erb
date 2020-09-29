@@ -1,7 +1,7 @@
 <div class="bg-white flex space-x-12 border-t-2 py-6 w-full items-center justify-center bottom-0 text-5xl text-gray-800 mt-2">
     <div class="flex flex-col items-center">
         <div><i class="fa fa-building text-teal-700"></i></div>
-        <div><%= link_to 'all properties', all_properties_path %></div> 
+        <div><%= link_to 'all listings', all_properties_path %></div> 
     </div>
     <div class="flex flex-col items-center">
         <div><i class="fa fa-building text-teal-700"></i></div>
@@ -11,8 +11,17 @@
         <div><i class="fa fa-building text-teal-700"></i></div>
         <div><%= link_to 'for rent', home_rentals_path %></div>
     </div>
-    <div class="flex flex-col items-center">
-        <div><i class="fa fa-user text-teal-700"></i></div>
-        <div><%= link_to 'account', current_user %></div>
-    </div>
+    
+    <% if user_signed_in? %>
+        <div class="flex flex-col items-center">
+            <div><i class="fa fa-user text-teal-700"></i></div>
+            <div><%= link_to 'account', current_user %></div>
+        </div>    
+        <% else %>
+        <div class="flex flex-col items-center">
+            <div><i class="fa fa-user text-teal-700"></i></div>
+            <div><%= link_to 'login', new_user_session_path %></div>
+        </div>        
+    <% end %>
+    
 </div>

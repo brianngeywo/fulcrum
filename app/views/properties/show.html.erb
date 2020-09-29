@@ -1,6 +1,7 @@
 <% if @browser.device.mobile? %>
     <%= render 'mobile.property.show' %>
     <% else %>
+<%= render 'navigation/desktop/top_bar' %>
     <p id="notice"><%= notice %></p>
     <div class="bg-black">
         <%= image_tag @property.property_cover_photo, class:"w-full h-56 object-contain object-center" if @property.property_cover_photo.present? %>    

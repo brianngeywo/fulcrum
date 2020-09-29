@@ -1,6 +1,7 @@
 <% if @browser.device.mobile? %>
     <%= render 'mobile.edit' %>
     <% else %>
+<%= render 'navigation/desktop/top_bar' %>
     <div class="w-full bg-blue-900 flex min-h-screen">
         <aside class="w-1/4 h-full bg-blue-900 grid">
             <%= render 'layouts/dashboard/side_nav' %>

@@ -1,6 +1,7 @@
 <% if @browser.device.mobile? %>
     <%= render 'mobile.property.index' %>
     <% else %>
+<%= render 'navigation/desktop/top_bar' %>
         <div class="px-24 py-4">
             <div class="grid grid-rows-flow grid-cols-4 gap-3">
                 <% @properties.available.each do |property| %>
@@ -37,4 +38,4 @@
             </div>
         </div>
 <% end %>
-        
+    
