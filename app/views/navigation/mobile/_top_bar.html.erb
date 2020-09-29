@@ -1,0 +1,26 @@
+<div class="flex px-24 items-center text-5xl py-3">
+    <div class="capitalize font-bold flex-grow text-green-700">fulcrum</div>
+    <div x-data="{ open: false }" class="inline-block relative">
+        <button @click="open = true"><i class="fa fa-bars"></i></button>
+
+        <ul x-show.transition="open" @click.away="open = false">
+          <div class="capitalize flex-col absolute bg-white font-medium my-3 w-full text-5xl p-2 shadow-2xl items-center">
+            <div class="py-1">
+              <%= link_to 'your account', current_user %>
+            </div>
+            <div class="py-1">
+              <%= link_to 'dashboard', dashboard_path %>
+            </div>
+            <div class="py-1">
+              <%= link_to 'edit account', edit_user_registration_path %>
+            </div>
+            <div class="py-1 bg-blue-900 rounded text-white text-center">
+              <%= link_to 'add property', new_property_path %>
+            </div>
+            <div class="py-1 text-red-700">
+              <%= link_to 'logout', destroy_user_session_path, method: :delete %>
+            </div>
+          </div>
+        </ul>
+      </div>
+</div>
