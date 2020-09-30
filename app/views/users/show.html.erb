@@ -32,7 +32,7 @@
                         <div><%=  @properties_leased %></div>
                     </div>
                 </div>
-                <div class="capitalize text-blue-700 font-medium py-3 px-4"><%= link_to 'go to dashboard', dashboard_path %></div>
+                <div class="capitalize text-blue-700 font-medium py-3 px-4"><%= link_to 'go to dashboard', dashboard_path if user_signed_in? %></div>
             </div>
             <div class="w-full">
                 <div class="py-4 px-6">

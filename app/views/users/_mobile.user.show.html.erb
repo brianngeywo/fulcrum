@@ -8,7 +8,7 @@
     </div>
     <div class="font-bold text-teal-700 text-center capitalize text-6xl my-3"><%= @user.company_name %></div>
     <div class="bg-white flex-col text-4xl px-24 space-y-8 my-4 shadow-2xl py-4">
-        <div class="capitalize text-blue-700 font-medium py-3 px-4"><%= link_to 'go to dashboard', dashboard_path %></div>
+        <div class="capitalize text-blue-700 font-medium py-3 px-4"><%= link_to 'go to dashboard', dashboard_path if user_signed_in? %></div>
         <div class="flex items-center">
             <div class="text-6xl">
             <i class="fa fa-phone-alt p-4 bg-gray-300 rounded-full mr-4 text-teal-700"></i>                          

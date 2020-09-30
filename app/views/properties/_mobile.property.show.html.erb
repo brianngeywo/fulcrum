@@ -46,9 +46,9 @@
         <div class="text-5xl font-semibold capitalize text-center my-3 text-gray-700">property description</div>
         <div class="times text-4xl"> <%= @property.description %> </div>
     </div>
-    <div class="bg-white font-bold text-gray-600 text-center capitalize text-5xl my-8">other listings by <%= @property.user.company_name %></div>
     <div class="bg-white my-3">
         <% if @agent_properties.available.present? %>
+            <div class="bg-white font-bold text-gray-600 text-center capitalize text-5xl my-8">other listings by <%= @property.user.company_name %></div>
             <div class="my-3">
                 <% @agent_properties.available.last(3).each do |property| %>
                 <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
@@ -77,11 +77,11 @@
             </div>
         <% end %>
     </div>
-    <div class="bg-white font-bold text-gray-600 text-center capitalize text-5xl my-8"> nearby properties </div>
     <div class="bg-white my-3">
-        <% if @agent_properties.available.present? %>
+        <% if @property.nearbys.available.present? %>
+          <div class="bg-white font-bold text-gray-600 text-center capitalize text-5xl my-8"> nearby properties </div>
             <div class="my-3">
-                <% @property.nearbys.available.last(3).each do |property| %>
+                <% @property.nearbys.available.last(4).each do |property| %>
                 <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
                     <%= link_to show_property_url(property) do %>
                         <div class="w-full">
