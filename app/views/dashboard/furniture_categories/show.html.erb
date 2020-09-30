@@ -1,0 +1,32 @@
+<% if @browser.device.mobile? %>
+    <%= render 'mobile.show' %>
+    <% else %>
+<%= render 'navigation/desktop/top_bar' %>
+    <div>
+        <div class="bg-cover bg-center py-6" style="background-image: url(https://images.unsplash.com/photo-1521334884684-d80222895322?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);background-color: rgba(0,0,0,0.4);background-blend-mode: multiply;">
+            <div class="text-center text-4xl capitalize text-white py-6 font-bold">find rentals in kenya</div>
+            <div class="grid justify-items-center">
+                <form action="" class="flex">
+                    <input type="text" placeholder="try eldoret..." class="p-2 text-lg capitalize">
+                    <button class="bg-teal-700 text-white capitalize p-3 text-lg hover:shadow-2xl">search</button>
+                </form>
+            </div>
+        </div>
+        <p id="notice"><%= notice %></p>
+
+        <p>
+            <strong>Name:</strong>
+            <%= @furniture_category.name %>
+        </p>
+
+        <% @furniture_category.furnitures.each do |furniture| %>
+            <div class="bg-black">
+              <%= image_tag furniture.furniture_cover_photo, class:"w-full h-56 object-cover object-center" if furniture.furniture_cover_photo.present? %>    
+          </div>
+            <%= link_to furniture.description, furniture %><br>
+        <% end %>
+
+        <%= link_to 'Edit', edit_furniture_category_path(@furniture_category) %> |
+        <%= link_to 'Back', furniture_categories_path %>
+    </div>
+<% end %>

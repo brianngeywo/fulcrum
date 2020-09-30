@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Furniture Categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @furniture_categories.each do |furniture_category| %>
+      <tr>
+        <td><%= furniture_category.name %></td>
+        <td><%= link_to 'Show', furniture_category %></td>
+        <td><%= link_to 'Edit', edit_furniture_category_path(furniture_category) %></td>
+        <td><%= link_to 'Destroy', furniture_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Furniture Category', new_furniture_category_path %>

@@ -1,0 +1,53 @@
+<% if @browser.device.mobile? %>
+    <%= render 'mobile.show' %>
+    <% else %>
+        <p id="notice"><%= notice %></p>
+        <%= render 'navigation/desktop/top_bar' %>
+    <div>
+        <div class="bg-cover bg-center py-6" style="background-image: url(https://images.unsplash.com/photo-1521334884684-d80222895322?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);background-color: rgba(0,0,0,0.6);background-blend-mode: multiply;">
+            <div class="text-center text-4xl capitalize text-white py-6 font-bold">find furniture for your <%= @furniture_category.name %></div>
+        </div>
+        <div class="flex px-24 min-h-screen">
+            <div class="w-1/3 flex-col py-4 px-3 bg-gray-100 capitalize font-bold text-gray-800">
+                <% FurnitureCategory.all.each do |furniture_category| %>
+                    <div class="border-b-2 py-3 ">
+                        <%= link_to furniture_category.name, show_furniture_category_path(furniture_category) %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="w-full py-4">
+                <div class="pl-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <% @furniture_category.furnitures.each do |furniture| %>
+                            <div class="shadow-2xl rounded-lg capitalize">
+                                <div class="bg-black">
+                                    <%= image_tag furniture.furniture_cover_photo, class:"w-full h-40 object-cover object-center" if furniture.furniture_cover_photo.present? %>    
+                                </div>
+                                <div class="px-6 py-4">
+                                    <div class="ttext-xl font-bold"><%= link_to furniture.description, show_furniture_path(furniture) %></div>
+                                    <div class="text-gray-700 text-xs">
+                                        <% if furniture.for_sale? %>
+                                            <div>for sale</div>
+                                        <% else %>
+                                            <div>for display</div>
+                                        <% end %>
+                                    </div>
+                                    <div class="text-gray-800">
+                                        <%= furniture.address %><br>
+                                    </div>
+                                    <div class="text-teal-700 font-bold whitespace-normal">
+                                        <% if furniture.for_sale? %>
+                                            <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                                        <% else %>
+                                            <%= furniture.user.company_name %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

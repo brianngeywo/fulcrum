@@ -7,10 +7,13 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @properties = @user.properties.available
+        @furnitures = @user.furnitures.available
         @properties_for_sale = @user.properties.for_sale.count
         @properties_for_rent = @user.properties.for_rent.count
         @properties_leased = @user.properties.leased.count
         @properties_sold = @user.properties.sold.count
+        @furnitures_for_sale = @user.furnitures.for_sale.count
+        @furnitures_sold = @user.furnitures.sold.count
 
 
         respond_to do |format|

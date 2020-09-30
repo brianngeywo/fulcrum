@@ -1,0 +1,63 @@
+<%= form_with(model: furniture, local: true) do |form| %>
+  <% if furniture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(furniture.errors.count, "error") %> prohibited this furniture from being saved:</h2>
+
+      <ul>
+        <% furniture.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+      <div class="flex">
+          <div class="capitalize my-4 w-1/2">category:</div>
+          <select name="furniture[furniture_category_id]" class="my-6 p-4 text-center bg-teal-700 text-white">
+              <% FurnitureCategory.all.each do |furniture_category| %>
+                  <option value="<%= furniture_category.id %>"><%= furniture_category.name %></option>
+              <% end %>
+          </select>
+      </div>
+    <br>
+    <div class="px-5">
+    <%= form.label :for_sale %><br>
+      <div class="capitalize mx-5">
+        <%= form.select :for_sale, options_for_select({"for sale" => true, "for display" => false}, @furniture.for_sale),{}, {class: 'bg-white capitalize border p-2', selected: @set} %>
+        <% opts = @furniture.for_sale? ? { "available" => "available" , "sold" => "sold" } : { "available" => "available" , "for display" => "for display" } %>
+      </div>
+    </div>
+    <div class="px-5">
+        <%= form.label :status %><br>
+        <div class="capitalize mx-5">
+          <%= form.select :status, options_for_select(opts, @furniture.status), {}, {class: 'bg-white capitalize border p-2', selected: @set} %>
+      </div>
+    </div>
+    <div class="px-5">
+      <%= form.file_field :furniture_cover_photo, class:"my-2 border mx-5 p-1" %>
+    </div>
+
+
+    <div class="px-5">
+      <%= form.label :address %><br>
+      <%= form.text_field :address, class:"my-2 border mx-5 p-1", placeholder:"e.g. eldoret, hawaii" %>
+    </div>
+
+    <div class="px-5">
+      <%= form.label :price %><br>
+      <%= form.number_field :price, class:"my-2 border mx-5 p-1" %>
+    </div>
+
+    <div class="px-5">
+      <%= form.label :furniture_images %> Link<br>
+      <%= form.text_field :furniture_images, class:"my-2 border p-1 mx-5 w-full", placeholder:"paste your google photos link here" %>
+    </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,87 @@
+<% if @browser.device.mobile? %>
+    <%= render 'mobile.furniture.show' %>
+    <% else %>
+<%= render 'navigation/desktop/top_bar' %>
+    <p id="notice"><%= notice %></p>
+    <div class="bg-black">
+        <%= image_tag @furniture.furniture_cover_photo, class:"w-full h-56 object-contain object-center" if @furniture.furniture_cover_photo.present? %>    
+    </div>
+    <div class="flex">
+        <div class="w-full px-2">
+            <div class="px-24 my-4">
+            <div class="text-gray-700 capitalize font-semibold flex items-center">
+                <div class="flex-grow">
+                    <div class="text-teal-700 text-3xl font-bold"><%= @furniture.description %></div>
+                            <% if @furniture.for_sale? %>
+                                <div>for sale </div>
+                            <% else %>
+                                <div>for display </div>
+                            <% end %>            
+                        </div>
+                    <%= link_to 'click here to view photos', "#{ @furniture.furniture_images }", :target => '_blank', class:"text-blue-700 font-medium" %> 
+                </div>       
+            </div>
+            <div class=" flex ml-24  border-t-2">
+                <div class="flex-grow py-3 text-md capitalize">
+                        <div class="text-gray-700 capitalize font-semibold">
+                          <% if @furniture.for_sale? %>
+                              <%= @furniture.price > 0 ? number_to_currency(@furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                          <% else %>
+                              <%= @furniture.price > 0 ? number_to_currency(@furniture.price, unit: "kshs", precision: 0) : "for display" %>
+                          <% end %>
+                        </div>
+                    <div class="text-gray-700"><%= @furniture.address %></div>
+                </div>          
+            </div>
+            <% if @furniture.nearbys.present? %>
+                <div class="ml-24 py-4 border-t-2">
+                    <div class="grid grid-rows-flow grid-cols-3 gap-3">
+                      <div class="text-2xl text-center capitalize font-bold text-gray-600 pb-2">nearby furniture</div>
+                        <% @furniture.nearbys.available.last(3).each do |furniture| %>
+                            <div class="shadow-2xl rounded-lg capitalize text-sm">
+                                <%= link_to show_furniture_url(furniture) do %>
+                                    <div class="h-40 w-full">
+                                        <%= image_tag furniture.furniture_cover_photo , class: " h-full w-full object-cover object-center" if furniture.furniture_cover_photo.attached? %>
+                                    </div>
+                                    <div class="p-2 h-24">
+                                        <div class="font-bold">
+                                        <%= furniture.description %>
+                                            <div class="text-gray-700 text-xs font-medium">
+                                                <%= furniture.distance.round(2) %> kms<br>
+                                            </div>
+                                        </div>
+                                        <div class="text-gray-700">
+                                        <%= furniture.address %><br>
+                                        </div>
+                                        <div class="text-teal-700 font-bold whitespace-normal">
+                                          <% if furniture.for_sale? %>
+                                              <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                                          <% else %>
+                                              <%= furniture.user.company_name %>
+                                          <% end %>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+            <div class="ml-24 py-3 border-t-2">
+                <%= render 'agent_furnitures' %>
+            </div>
+            <div class="px-24">
+            </div>
+        </div>
+        <div class="w-2/5 px-4 bg-gray-100">
+            <div class="py-2 grid justify-items-center my-3 mx-6 shadow-2xl bg-white rounded-lg border" >
+                <%= image_tag @furniture.user.company_logo, class:"w-24 h-24 object-cover object-center justify-self-center" if @furniture.user.company_logo.attached? %>
+                <div class="text-teal-700 text-lg font-light capitalize my-2"><%= link_to @furniture.user.company_name, @furniture.user %></div>
+                <div class="font-semibold capitalize px-6">phone number</div>
+                <div class="capitalize px-6"><%= @furniture.user.company_phone_number1 %></div>
+                <div class="capitalize px-6"><%= @furniture.user.company_phone_number2 %></div>
+            </div>    
+        </div>    
+    </div>
+
+<% end %>

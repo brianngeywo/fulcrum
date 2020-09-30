@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   get 'dashboard/for_sale_listings'
   get 'properties' => "properties#index", as: 'all_properties'
   get 'properties/:id', controller: 'properties', action: :show, as: 'show_property'
-  get 'dashboard/for_sale_listings'
+  get 'furnitures' => "furnitures#index", as: 'all_furnitures'
+  get 'furnitures/:id', controller: 'furnitures', action: :show, as: 'show_furniture'
+  get 'furniture_categories' => "furniture_categories#index", as: 'all_furniture_categories'
+  get 'furniture_categories/:id', controller: 'furniture_categories', action: :show, as: 'show_furniture_category'
 
   scope module: 'dashboard', path: 'dashboard'  do
     resources :properties
+    resources :furniture_categories
+    resources :furnitures
   end
   devise_for :users
   resources :users, only: [:index, :show] do

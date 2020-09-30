@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_26_105641) do
+ActiveRecord::Schema.define(version: 2020_09_30_135415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,27 @@ ActiveRecord::Schema.define(version: 2020_09_26_105641) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "furniture_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "furnitures", force: :cascade do |t|
+    t.integer "furniture_category_id"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "status", default: "available"
+    t.boolean "for_sale", default: true
+    t.float "latitude"
+    t.float "longitude"
+    t.string "furniture_images"
+    t.string "address", default: "eldoret"
+    t.integer "price", default: 1000
   end
 
   create_table "properties", force: :cascade do |t|

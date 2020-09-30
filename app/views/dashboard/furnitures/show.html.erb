@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+    <div class="bg-black">
+        <%= image_tag @furniture.furniture_cover_photo, class:"w-full h-56 object-contain object-center" if @furniture.furniture_cover_photo.present? %>    
+    </div>
+<p>
+  <strong>Description:</strong>
+  <%= @furniture.description %><br>
+  <%= @furniture.status %><br>
+  <%= link_to @furniture.furniture_category.name, furniture_category_path(@furniture.furniture_category) if @furniture.furniture_category.present? %>
+</p>
+
+<%= link_to 'Edit', edit_furniture_path(@furniture) %> |
+<%= link_to 'Back', furnitures_path %>

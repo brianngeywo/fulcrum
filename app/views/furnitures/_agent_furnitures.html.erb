@@ -1,0 +1,36 @@
+<% if @agent_furnitures.available.present? %>
+ <div class="text-2xl text-center capitalize font-bold mb-2 text-gray-600">other available furniture by <%= @furniture.user.company_name %></div>
+  <div class="grid grid-cols-3 gap-3">
+    <% @agent_furnitures.available.last(3).each do |furniture| %>
+      <div class="shadow-2xl rounded-lg capitalize text-sm">
+          <%= link_to show_furniture_url(furniture) do %>
+              <div class="h-40 w-full">
+                  <%= image_tag furniture.furniture_cover_photo , class: " h-full w-full object-cover object-center" if furniture.furniture_cover_photo.attached? %>
+              </div>
+              <div class="p-2 h-24">
+                  <div class="font-bold">
+                  <%= furniture.description %><br>
+                  </div>
+                  <div class="text-gray-700 text-xs">
+                      <% if furniture.for_sale? %>
+                          <div>for sale</div>
+                      <% else %>
+                          <div>for display</div>
+                      <% end %>
+                  </div>
+                  <div class="text-gray-700">
+                  <%= furniture.address %><br>
+                  </div>
+                  <div class="text-teal-700 font-bold whitespace-normal">
+                    <% if furniture.for_sale? %>
+                        <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                    <% else %>
+                        <%= furniture.user.company_name %>
+                    <% end %>
+                  </div>
+              </div>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
