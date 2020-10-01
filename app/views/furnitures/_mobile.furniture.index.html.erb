@@ -1,0 +1,75 @@
+<div class="top-0 sticky bg-white py-2 shadow-2xl">
+    <%= render 'navigation/mobile/top_bar' %>
+</div>
+<div class="bg-white my-3">
+    <div class="w-full h-64 bg-cover bg-center grid" style="background-image: url(https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80); background-color: rgba(0,0,0,0.4);background-blend-mode: multiply;">
+        <div class="shadow-2xl text-center capitalize text-6xl text-white font-semibold justify-self-center my-auto">find furniture easily</div>
+    </div>
+    <div x-data="{ tab: 'all' }">
+        <div class="grid grid-cols-3 gap-4 pt-8 px-8 border-b-4 text-blue-900 text-5xl uppercase bg-white">
+            <button :class="{ 'active': tab === 'all' }" @click="tab = 'all'" class="border-2 p-4 rounded-lg justify-self-center w-full font-medium bg-white focus:bg-blue-800 focus:text-white">all</button>
+            <button :class="{ 'active': tab === 'for sale' }" @click="tab = 'for sale'" class="border-2 p-4 rounded-lg justify-self-center w-full font-medium bg-white focus:bg-blue-800 focus:text-white">for sale</button>
+        </div>
+
+    <div x-show.transition="tab === 'all'">
+        <div class="my-3 min-h-screen px-16">
+            <% @furnitures.available.each do |furniture| %>
+                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                    <%= link_to show_furniture_url(furniture) do %>
+                        <div class="w-full">
+                            <%= image_tag furniture.furniture_cover_photo , class: "mobile-furniture-show-image w-full object-cover object-center" if furniture.furniture_cover_photo.attached? %>
+                        </div>
+                        <div class="py-3 px-24">
+                            <div class="font-bold">
+                            <%= furniture.description %><br>
+                            </div>
+                            <div class="text-gray-700">
+                            <%= furniture.address %><br>
+                            </div>
+                            <div class="text-teal-700 font-bold whitespace-normal">
+                                <% if furniture.for_sale? %>
+                                    <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                                <% else %>
+                                    <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for display" %>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div x-show.transition="tab === 'for sale'">
+        <div class="my-3 min-h-screen px-16">
+            <% @furnitures.for_sale.available.each do |furniture| %>
+                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                    <%= link_to show_furniture_url(furniture) do %>
+                        <div class="w-full">
+                            <%= image_tag furniture.furniture_cover_photo , class: "mobile-furniture-show-image w-full object-cover object-center" if furniture.furniture_cover_photo.attached? %>
+                        </div>
+                        <div class="py-3 px-24">
+                            <div class="font-bold">
+                            <%= furniture.description %><br>
+                            </div>
+                            <div class="text-gray-700">
+                            <%= furniture.address %><br>
+                            </div>
+                            <div class="text-teal-700 font-bold whitespace-normal">
+                                <% if furniture.for_sale? %>
+                                    <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                                <% else %>
+                                    <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for disply" %>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="sticky bottom-0">
+    <%= render 'navigation/mobile/footer' %>
+</div>

@@ -1,0 +1,119 @@
+<div class="bg-gray-100">
+    <div class="top-0 sticky bg-white py-2 shadow-2xl">
+        <%= render 'navigation/mobile/top_bar' %>
+    </div>
+
+    <div class="shadow-2xl bg-white">
+        <div class="bg-black">
+            <%= image_tag @furniture.furniture_cover_photo, class:"mobile-furniture-show-image w-full object-contain object-center" if @furniture.furniture_cover_photo.present? %>
+        </div>
+    </div>
+    <div class="font-bold text-teal-700 text-center capitalize text-6xl my-3"><%= @furniture.description %></div>
+    <div class="bg-white flex-col text-4xl px-24 space-y-8 my-4 shadow-2xl py-4">
+        <div class="font-bold text-gray-600 text-center text-5xl">furniture info</div>
+        <div>  
+        <i class="fa fa-door-open mr-3 text-teal-700"></i>                          
+            <% if @furniture.for_sale? %>
+                for sale
+            <% else %>
+                for display
+            <% end %> 
+        </div>
+        <div>
+            <i class="far fa-calendar-check mr-3 text-teal-700"></i>                          
+            <%= @furniture.status %>
+        </div>
+        <div>
+            <i class="fa fa-tag mr-3 text-teal-700"></i> 
+            <% if @furniture.for_sale? %>
+                <%= @furniture.price > 0 ? number_to_currency(@furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+            <% else %>
+                    <%= @furniture.price ? number_to_currency(@furniture.price, unit: "kshs", precision: 0) : "for rent" %>/month
+            <% end %>
+        </div>
+        <div>
+            <i class="fa fa-map-marker-alt mr-3 text-teal-700"></i> 
+            <%= @furniture.address %>
+        </div>
+        <div>
+            <i class="fa fa-images mr-3 text-teal-700"></i>
+            <%= link_to 'click here to view photos', "#{ @furniture.furniture_images }", :target => '_blank', class:"text-blue-700 font-medium" %> 
+        </div>
+        <div class="flex capitalize">
+            <div class="mr-3 text-teal-700 capitalize font-semibold">posted by:</div>
+            <%= link_to @furniture.user.company_name, user_path(@furniture.user) %>
+        </div>
+    </div>
+    <div class="bg-white px-24 py-4 shadow-2xl my-4">
+        <div class="text-5xl font-semibold capitalize my-3 text-gray-700">furniture description</div>
+        <div class="times text-4xl"> <%= @furniture.description %> </div>
+    </div>
+    <div class="bg-white my-3 px-16">
+        <% if @agent_furnitures.present? %>
+            <div class="bg-white font-bold text-gray-600 text-center capitalize text-5xl my-8">other listings by <%= @furniture.user.company_name %></div>
+            <div class="my-3">
+                <% @agent_furnitures.available.last(3).each do |furniture| %>
+                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                    <%= link_to show_furniture_url(furniture) do %>
+                        <div class="w-full">
+                            <%= image_tag furniture.furniture_cover_photo , class: "mobile-furniture-show-image w-full object-cover object-center" if furniture.furniture_cover_photo.attached? %>
+                        </div>
+                        <div class="py-3 px-24">
+                            <div class="font-bold">
+                                <%= furniture.description %>
+                            </div>
+                            <div class="text-gray-700">
+                            <%= furniture.address %><br>
+                            </div>
+                            <div class="text-teal-700 font-bold whitespace-normal">
+                                <% if furniture.for_sale? %>
+                                    <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                                <% else %>
+                                    <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for display" %>
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+    <div class="bg-white my-3 px-16">
+        <% if @furniture.nearbys.present? %>
+          <div class="bg-white font-bold text-gray-600 text-center capitalize text-5xl my-8"> nearby properties </div>
+            <div class="my-3">
+                <% @furniture.nearbys.available.last(4).each do |furniture| %>
+                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                    <%= link_to show_furniture_url(furniture) do %>
+                        <div class="w-full">
+                            <%= image_tag furniture.furniture_cover_photo , class: "mobile-furniture-show-image w-full object-cover object-center" if furniture.furniture_cover_photo.attached? %>
+                        </div>
+                        <div class="py-3 px-24">
+                            <div class="font-bold">
+                                <%= furniture.description %>
+                                <div class="text-gray-700 text-4xl font-medium">
+                                    <%= furniture.distance.round(2) %> kms<br>
+                                </div>  
+                            </div>
+                            <div class="text-gray-700">
+                            <%= furniture.address %><br>
+                            </div>
+                            <div class="text-teal-700 font-bold whitespace-normal">
+                                <% if furniture.for_sale? %>
+                                    <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                                <% else %>
+                                    <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                <% end %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+    <div class="sticky bottom-0">
+        <%= render 'navigation/mobile/footer' %>
+    </div>
+</div>

@@ -1,16 +1,11 @@
 <div class="bg-white flex space-x-12 border-t-2 py-6 w-full items-center justify-center bottom-0 text-5xl text-gray-800 mt-2">
     <div class="flex flex-col items-center">
-        <div><i class="fa fa-building text-teal-700"></i></div>
+        <div><i class="fa fa-home text-green-700"></i></div>
         <div><%= link_to 'all properties', all_properties_path %></div> 
     </div>
     <div class="flex flex-col items-center">
-        <div><i class="fa fa-building text-teal-700"></i></div>
-        <div><%= link_to 'rentals', home_rentals_path %></div>
-    </div>
-    
-    <div class="flex flex-col items-center">
-        <div><i class="fa fa-building text-teal-700"></i></div>
-        <div><%= link_to 'for sale', home_property_on_sale_path %></div>
+        <div><i class="fa fa-couch text-green-700"></i></div>
+        <div><%= link_to 'furnitures', all_furnitures_path %></div>
     </div>
 
     <% if user_signed_in? %>

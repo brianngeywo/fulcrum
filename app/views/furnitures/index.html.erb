@@ -1,27 +1,31 @@
-<p id="notice"><%= notice %></p>
+<% if @browser.device.mobile? %>
+    <%= render 'mobile.furniture.index' %>
+    <% else %>
+  <p id="notice"><%= notice %></p>
 
-<h1>Furnitures</h1>
+  <h1>Furnitures</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @furnitures.each do |furniture| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= furniture.description %></td>
-        <td><%= link_to 'Show', furniture %></td>
-        <td><%= link_to 'Edit', edit_furniture_path(furniture) %></td>
-        <td><%= link_to 'Destroy', furniture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Description</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<%= link_to 'categories', furniture_categories_path %>
-<%= link_to 'New Furniture', new_furniture_path %>
+    <tbody>
+      <% @furnitures.each do |furniture| %>
+        <tr>
+          <td><%= furniture.description %></td>
+          <td><%= link_to 'Show', furniture %></td>
+          <td><%= link_to 'Edit', edit_furniture_path(furniture) %></td>
+          <td><%= link_to 'Destroy', furniture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <%= link_to 'categories', furniture_categories_path %>
+  <%= link_to 'New Furniture', new_furniture_path %>
+<% end %>

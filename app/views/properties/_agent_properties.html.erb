@@ -1,5 +1,5 @@
 <% if @agent_properties.available.present? %>
-  <div class="grid grid-cols-3 gap-3">
+  <div class="grid grid-cols-3 gap-3 px-16">
     <% @agent_properties.available.last(3).each do |property| %>
       <div class="shadow-2xl rounded-lg capitalize text-sm">
           <%= link_to show_property_url(property) do %>

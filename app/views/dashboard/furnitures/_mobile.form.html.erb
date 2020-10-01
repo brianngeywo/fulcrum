@@ -1,0 +1,51 @@
+<%= form_with(model: furniture, locals: { furniture: @furniture }) do |form| %>
+  <% if furniture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(furniture.errors.count, "error") %> prohibited this furniture from being saved:</h2>
+
+      <ul>
+        <% furniture.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid border shadow-md rounded-lg p-4 text-4xl text-gray-800 bg-white">
+    <div class="font-medium px-5">
+    <%= form.label :description %><br>
+    <%= form.text_field :description, class:"my-2 border mx-5 p-3 border-gray-600" %>
+    </div>
+    <div class="font-medium px-5">
+    <%= form.label :address %><br>
+    <%= form.text_field :address, class:"my-2 border mx-5 p-3 border-gray-600", placeholder:"find the address from google maps" %>
+    </div>
+    <div class="font-medium px-5">
+    <%= form.label :for_sale %><br>
+      <div class="capitalize mx-5">
+        <%= form.select :for_sale, options_for_select({"for sale" => true, "for rent" => false}, @furniture.for_sale),{}, {class: 'bg-white border-gray-600 capitalize border p-2', selected: @set} %>
+        <% opts = @furniture.for_sale? ? { "available" => "available" , "sold" => "sold" } : { "available" => "available" , "leased" => "leased" } %>
+      </div>
+    </div>
+    <div class="font-medium px-5">
+        <%= form.label :status %><br>
+        <div class="capitalize mx-5">
+          <%= form.select :status, options_for_select(opts, @furniture.status), {}, {class: 'bg-white capitalize border p-2 border-gray-600', selected: @set} %>
+      </div>
+    </div>
+    <div class="font-medium px-5">
+      <%= form.label :price %><br>
+    <%= form.number_field :price, class:"my-2 border mx-5 p-3 border-gray-600" %>
+    </div>
+    <div class="font-medium px-5">
+    <%= form.file_field :furniture_cover_photo, class:"my-2 border mx-5 p-3 border-gray-600" %>
+    </div>
+    <div class="font-medium px-5">
+      <%= form.label :furniture_images %> Link<br>
+    <%= form.text_field :furniture_images, class:"my-2 border p-3 mx-5 w-full border-gray-600", placeholder:"paste your google photos link here" %>
+    </div>
+    <div class="font-medium px-5 grid justify-items-center mt-6">
+      <%= form.submit disable_with: 'Submiting...', class:"font-medium text-5xl bg-teal-700 text-white p-3 capitalize" %>
+    </div>
+  </div>
+<% end %>
