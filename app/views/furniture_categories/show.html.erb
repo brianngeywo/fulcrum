@@ -39,7 +39,7 @@
                                         <% if furniture.for_sale? %>
                                             <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
                                         <% else %>
-                                            <%= furniture.user.company_name %>
+                                            <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for display" %>
                                         <% end %>
                                     </div>
                                 </div>

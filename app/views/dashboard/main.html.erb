@@ -6,7 +6,16 @@
             <aside class="w-1/4 h-full bg-blue-900 grid">
                 <%= render 'layouts/dashboard/side_nav' %>
             </aside>
-            <div class="w-full px-4 min-h-full bg-gray-100">
+            <div class="w-full px-4 min-h-full bg-gray-200">
+                <div x-data="{ tab: 'properties' }">
+                    <div class="flex items-center justify-center space-x-8 my-2">
+                        <button :class="{ 'active': tab === 'properties' }" @click="tab = 'properties'" class="focus:outline-none bg-white focus:bg-gray-400 rounded-lg p-3 border">all</button>
+                        <button :class="{ 'active': tab === 'rentals' }" @click="tab = 'rentals'" class="focus:outline-none bg-white focus:bg-gray-400 rounded-lg p-3 border">rentals</button>
+                        <button :class="{ 'active': tab === 'for sale' }" @click="tab = 'for sale'" class="focus:outline-none bg-white focus:bg-gray-400 rounded-lg p-3 border">for sale</button>
+                        <button :class="{ 'active': tab === 'leased' }" @click="tab = 'leased'" class="focus:outline-none bg-white focus:bg-gray-400 rounded-lg p-3 border">leased</button>
+                        <button :class="{ 'active': tab === 'sold' }" @click="tab = 'sold'" class="focus:outline-none bg-white focus:bg-gray-400 rounded-lg p-3 border">sold</button>
+                    </div>
+                
                 <div class="grid grid-cols-5 place-items-center justify-items-start gap-4 shadow-xl py-3 bg-white capitalize font-semibold text-blue-700 my-2">
                     <div></div>
                     <div class="text-center">name</div>
@@ -14,7 +23,14 @@
                     <div>price</div>
                     <div>actions</div>
                 </div>
-                <%= render 'layouts/dashboard/content', obj: current_user.properties %>
+
+                    <div x-show="tab === 'properties'"><%= render 'layouts/dashboard/content', obj: current_user.properties %></div>
+                    <div x-show="tab === 'rentals'"><%= render 'layouts/dashboard/content', obj: current_user.properties.available.for_rent %></div>
+                    <div x-show="tab === 'for sale'"><%= render 'layouts/dashboard/content', obj: current_user.properties.available.for_sale %></div>
+                    <div x-show="tab === 'leased'"><%= render 'layouts/dashboard/content', obj: current_user.properties.leased %></div>
+                    <div x-show="tab === 'sold'"><%= render 'layouts/dashboard/content', obj: current_user.properties.sold %></div>
+                
+                </div>
             </div>
         </div>
 <% end %>

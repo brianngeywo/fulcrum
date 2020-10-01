@@ -1,11 +1,9 @@
 <div class="text-sm shadow-md sticky top-0 bg-white flex py-3 px-24 text-gray-800 space-x-5 capitalize font-medium">
   <%= link_to 'all properties', all_properties_path %>
-  <%= link_to 'rentals', home_rentals_path %>
-  <%= link_to 'for sale', home_property_on_sale_path %>
   <%= link_to 'real estate agents', users_path %> 
       <div x-data="{ open: false }" class="table">
         <button @click="open = !open" class="focus:outline-none inline-block text-sm bg-white text-gray-800 space-x-5 capitalize font-medium ">
-          furnitures
+          home furnitures
         </button>
 
         <ul x-show.transition="open" class="bg-white absolute mt-2 shadow-2xl rounded w-auto px-8 pt-2 text-gray-800 font-normal capitalize z-auto">
@@ -26,7 +24,6 @@
             <li class="py-2 px-3 mt-2 block border-b-2"><%= link_to 'your account', current_user %></li>
             <li class="py-2 px-3 mt-2 block border-b-2"><%= link_to 'dashboard', dashboard_path %></li>
             <li class="py-2 px-3 mt-2 block border-b-2"><%= link_to 'edit account', edit_user_registration_path %></li>
-            <li class="py-2 px-3 mt-2 block border-b-2"><%= link_to 'add property', new_property_path %></li>
             <li class="py-2 px-3 block mt-2 border-b-2"><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>

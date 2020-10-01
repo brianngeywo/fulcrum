@@ -1,8 +1,16 @@
 <div class="bg-blue-800 w-full text-blue-100 py-3 px-4 font-semibold text-lg capitalize">aim system</div>
 <div class="justify-items-left px-4 text-white capitalize text-md font-semibold">
-    <div class="py-4 border-b border-blue-800"><%= link_to 'all listing', dashboard_path %> </div>
-    <div class="py-4 border-b border-blue-800"><%= link_to 'available listings', dashboard_available_listings_path %></div>
-    <div class="py-4 border-b border-blue-800"><%= link_to 'listing for sale', dashboard_for_sale_listings_path %></div>
-    <div class="py-4 border-b border-blue-800"><%= link_to 'rental listings', dashboard_rentals_listings_path %></div>
-    <div class="py-2 border-b border-blue-800 bg-white text-blue-800 rounded-md text-center"><%= link_to 'add new listing', new_property_path %></div>
+    <div class="py-4 border-b border-blue-800"><%= link_to 'properties', dashboard_path %> </div>
+    <div class="py-4 border-b border-blue-800"><%= link_to 'furnitures', dashboard_available_listings_path %></div>
+   <div x-data="{ open: false }">
+    <div @click="open = true" class="py-2 border-b border-blue-800 bg-white text-blue-800 rounded-md text-center">add listing</div>
+
+    <ul
+        x-show="open"
+        @click.away="open = false"
+    >
+        <%= link_to 'add property', new_property_path %><br>
+        <%= link_to 'add furniture', new_furniture_path %>
+    </ul>
+</div>
 </div>
