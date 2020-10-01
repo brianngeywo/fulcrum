@@ -22,7 +22,7 @@
             <li class="py-2 px-3 mt-2 block border-b-2"><%= link_to 'your account', current_user %></li>
             <li class="py-2 px-3 mt-2 block border-b-2"><%= link_to 'dashboard', dashboard_path %></li>
             <li class="py-2 px-3 mt-2 block border-b-2"><%= link_to 'edit account', edit_user_registration_path %></li>
-            <li class="py-2 px-3 block mt-2 border-b-2"><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
+            <li class="py-2 px-3 bg-red-700 text-center text-white"><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
     <% else %>

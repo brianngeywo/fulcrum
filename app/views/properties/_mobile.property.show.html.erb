@@ -1,6 +1,7 @@
-<div class="bg-gray-100">
+<div class="top-0 sticky bg-white py-2 ">
     <%= render 'navigation/mobile/top_bar' %>
-
+</div>
+<div class="bg-gray-100">
     <div class="shadow-2xl bg-white">
         <div class="bg-black">
             <%= image_tag @property.property_cover_photo, class:"mobile-property-show-image w-full object-contain object-center" if @property.property_cover_photo.present? %>
