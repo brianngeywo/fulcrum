@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_30_135415) do
+ActiveRecord::Schema.define(version: 2020_10_02_065830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_135415) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "searchtags"
   end
 
   create_table "furnitures", force: :cascade do |t|
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_135415) do
     t.string "furniture_images"
     t.string "address", default: "eldoret"
     t.integer "price", default: 1000
+    t.string "searchtags"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -83,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_09_30_135415) do
     t.string "name"
     t.integer "bathrooms", default: 0
     t.string "description"
+    t.string "searchtags"
   end
 
   create_table "rentors", force: :cascade do |t|

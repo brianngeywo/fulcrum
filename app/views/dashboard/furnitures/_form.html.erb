@@ -58,6 +58,11 @@
       <%= form.text_field :furniture_images, class:"my-2 border p-1 mx-5 w-full", placeholder:"paste your google photos link here" %>
     </div>
 
+    <div class="px-5 overflow-auto">
+      <%= form.label :searchtags, class:"" %><br>
+      <%= form.rich_text_area :searchtags, class:"border p-1 h-full w-full break-words overflow-hidden", id:"property_description" %>
+    </div>
+
     <div class="px-5 grid justify-items-center mt-6">
       <%= form.submit disable_with: 'Submiting...', class:"font-medium text-lg bg-teal-700 text-white p-3 capitalize" %>
     </div>

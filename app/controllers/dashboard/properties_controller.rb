@@ -75,7 +75,7 @@ module Dashboard
 
     # Only allow a list of trusted parameters through.
     def property_params
-      params.fetch(:property, {}).permit(:name,:property_images, :address, :bedrooms, :parking_space, :bathrooms, :price, :property_cover_photo, :for_sale, :status, :latitude, :longitude, :description)
+      params.fetch(:property, {}).permit(:name,:property_images, :address, :bedrooms, :parking_space, :bathrooms, :price, :property_cover_photo, :for_sale, :status, :latitude, :longitude, :description, :searchtags)
     end
   end
 end

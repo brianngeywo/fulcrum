@@ -11,5 +11,6 @@ class Furniture < ApplicationRecord
     has_one_attached :furniture_cover_photo
     geocoded_by :address
     after_validation :geocode, :if => :address_changed?
+    has_rich_text :searchtags
 
 end

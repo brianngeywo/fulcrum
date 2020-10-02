@@ -16,6 +16,11 @@
     <%= form.text_field :name %>
   </div>
 
+    <div class="px-5 overflow-auto">
+      <%= form.label :searchtags, class:"" %><br>
+      <%= form.rich_text_area :searchtags, class:"border p-1 h-full w-full break-words overflow-hidden", id:"property_description" %>
+    </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

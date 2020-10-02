@@ -71,7 +71,7 @@ module Dashboard
 
       # Only allow a list of trusted parameters through.
       def furniture_category_params
-        params.require(:furniture_category).permit(:name)
+        params.require(:furniture_category).permit(:name, :searchtags)
       end
   end
 end
