@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem "browser", require: "browser/browser"
-gem "elasticsearch", require 'elasticsearch/model'
+gem "elasticsearch", require: "elasticsearch/model"
 gem 'search_flip'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
