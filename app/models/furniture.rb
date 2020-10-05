@@ -1,4 +1,7 @@
 class Furniture < ApplicationRecord
+    include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
+
     belongs_to :furniture_category
     belongs_to :user
     scope :latest, -> {order created_at: :desc} 

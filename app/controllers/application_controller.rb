@@ -12,5 +12,10 @@ class ApplicationController < ActionController::Base
 
   def get_browser
     @browser = Browser.new(request.env["HTTP_USER_AGENT"])
-  end 
+  end
+  
+  def make_search_ready 
+    @q = Property.ransack(params[:q])
+    @property = @q.result(distinct: true) 
+  end
 end

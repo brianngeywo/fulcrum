@@ -1,5 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :set_property, only: [:show]
+  before_action :make_search_ready
 
   # GET /properties
   # GET /properties.json
