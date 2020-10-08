@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_02_065830) do
+ActiveRecord::Schema.define(version: 2020_10_06_081457) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
   enable_extension "plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
@@ -69,6 +70,18 @@ ActiveRecord::Schema.define(version: 2020_10_02_065830) do
     t.string "searchtags"
   end
 
+  create_table "payments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "amount"
+    t.string "phone_number"
+    t.string "response"
+    t.boolean "state", default: false
+    t.string "CheckoutRequestID"
+    t.string "MerchantRequestID"
+    t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "properties", force: :cascade do |t|
     t.string "address"
     t.integer "bedrooms"
@@ -94,6 +107,12 @@ ActiveRecord::Schema.define(version: 2020_10_02_065830) do
     t.time "datetime"
     t.string "time_zone", default: "Nairobi"
     t.integer "property_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "callback"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,6 +1,6 @@
 class Furniture < ApplicationRecord
-    include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
+    # include Elasticsearch::Model
+    # include Elasticsearch::Model::Callbacks
 
     belongs_to :furniture_category
     belongs_to :user
@@ -14,6 +14,6 @@ class Furniture < ApplicationRecord
     has_one_attached :furniture_cover_photo
     geocoded_by :address
     after_validation :geocode, :if => :address_changed?
-    has_rich_text :searchtags
+    # has_rich_text :searchtags
 
 end

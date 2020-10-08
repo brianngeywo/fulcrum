@@ -1,6 +1,6 @@
 class Property < ApplicationRecord
-    include Elasticsearch::Model
-    include Elasticsearch::Model::Callbacks
+    # include Elasticsearch::Model
+    # include Elasticsearch::Model::Callbacks
 
     
     validates :address, presence: true
@@ -17,8 +17,8 @@ class Property < ApplicationRecord
     scope :for_rent, -> {where(for_sale: false, status: "available") } 
     scope :sold, -> { where(for_sale: true, status: "sold") } 
     scope :available, -> { where status: "available" }
-    has_rich_text :searchtags
-    has_rich_text :description
+    # has_rich_text :searchtags
+    # has_rich_text :description
     
 
 end

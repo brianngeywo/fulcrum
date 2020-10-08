@@ -28,5 +28,9 @@ Rails.application.routes.draw do
   get "home/property_on_sale"
   get "home/about", as: 'get_to_know_us'
   get "home/contact", as: 'talk_to_us'
+
+  get 'push/index'
+  post 'payment' => 'push#payment'
+  post 'callback' => 'push#callback'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
