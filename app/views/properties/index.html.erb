@@ -4,11 +4,6 @@
     <%= render 'navigation/desktop/top_bar' %>
     <div class="w-full h-48 bg-cover bg-center grid" style="background-image: url(https://images.unsplash.com/photo-1524813686514-a57563d77965?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80); background-color: rgba(0,0,0,0.4);background-blend-mode: multiply;">
         <div class="shadow-2xl text-center capitalize text-4xl text-white font-semibold justify-self-center my-auto">find rentals in kenya easily</div>
-                <%= search_form_for @q do |f| %>
-                    <%= f.search_field :address_or_description_or_searchtags_or_name_cont %>
-
-                <%= f.submit %>
-                <% end %>
     </div>
     <div x-data="{ tab: 'all' }">
         <div class="px-24 flex space-x-8 py-4 border-b-2">
