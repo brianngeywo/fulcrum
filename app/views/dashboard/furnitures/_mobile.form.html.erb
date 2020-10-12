@@ -46,7 +46,7 @@
     </div>
     <div class="font-medium px-5 overflow-auto">
       <%= form.label :searchtags, class:"" %><br>
-      <%= form.rich_text_area :searchtags, class:"border p-3 h-full w-full break-words overflow-hidden border-gray-600", id:"property_description" %>
+      <%= form.trix_editor :searchtags, class:"border p-3 h-full w-full break-words overflow-hidden border-gray-600", id:"property_description" %>
     </div>
     <div class="font-medium px-5 grid justify-items-center mt-6">
       <%= form.submit disable_with: 'Submiting...', class:"font-medium text-5xl bg-teal-700 text-white p-3 capitalize" %>
