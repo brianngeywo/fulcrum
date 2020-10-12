@@ -71,3 +71,4 @@ gem 'jquery-rails'
 gem 'phony_rails'
 gem 'trix-gem', require: 'trix', git: "https://github.com/DRBragg/trix-gem"
 gem 'ransack'
+gem 'rails_12factor', group: :production
