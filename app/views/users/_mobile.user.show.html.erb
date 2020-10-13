@@ -68,33 +68,114 @@
         <% end %>
         
     </div>
-    <div class="bg-white my-3 px-16">
-            <div class="my-3">
-                <% @properties.available.each do |property| %>
-                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
-                    <%= link_to show_property_url(property) do %>
-                        <div class="w-full">
-                            <%= image_tag property.property_cover_photo , class: "mobile-property-show-image w-full object-cover object-center" if property.property_cover_photo.attached? %>
-                        </div>
-                        <div class="py-3 px-24">
-                            <div class="font-bold">
-                            <%= property.name %><br>
-                            </div>
-                            <div class="text-gray-700">
-                            <%= property.address %><br>
-                            </div>
-                            <div class="text-teal-700 font-bold whitespace-normal">
-                                <% if property.for_sale? %>
-                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
-                                <% else %>
-                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+    <div x-data="{ tab: 'property' }" class="text-5xl">
+        <div class="flex items-center space-x-24 justify-center py-2 border-b-2">        
+            <% if @properties.present? %>
+                <button :class="{ 'active': tab === 'property' }" @click="tab = 'property'" class="p-3 border-2 rounded-lg focus:bg-blue-700 focus:text-white">properties</button>                
+            <% end %>
+            
+            <% if @furnitures.present? %>
+                <button :class="{ 'active': tab === 'furniture' }" @click="tab = 'furniture'" class="p-3 border-2 rounded-lg focus:bg-blue-700 focus:text-white">furnitures</button>
+            <% end %>
+        </div>
+        <div x-show="tab === 'property'">
+            <div x-data="{ tab: 'for-rent' }">
+                <div class="flex mx-16 my-4 space-x-12 r text-4xl">
+                    <button :class="{ 'active': tab === 'for-rent' }" @click="tab = 'for-rent'" class="p-3 border-2 rounded-lg focus:bg-blue-700 focus:text-white">rentals</button>
+                    <button :class="{ 'active': tab === 'for-sale' }" @click="tab = 'for-sale'" class="p-3 border-2 rounded-lg focus:bg-blue-700 focus:text-white">for sale</button>
+                </div>
+                <div x-show="tab === 'for-rent'">
+                    <div class="bg-white my-3 px-16">
+                            <div class="my-3">
+                                <% @properties.for_rent.available.each do |property| %>
+                                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                                    <%= link_to show_property_url(property) do %>
+                                        <div class="w-full">
+                                            <%= image_tag property.property_cover_photo , class: "mobile-property-show-image w-full object-cover object-center" if property.property_cover_photo.attached? %>
+                                        </div>
+                                        <div class="py-3 px-24">
+                                            <div class="font-bold">
+                                            <%= property.name %><br>
+                                            </div>
+                                            <div class="text-gray-700">
+                                            <%= property.address %><br>
+                                            </div>
+                                            <div class="text-teal-700 font-bold whitespace-normal">
+                                                <% if property.for_sale? %>
+                                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
+                                                <% else %>
+                                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
                                 <% end %>
                             </div>
-                        </div>
-                    <% end %>
+                    </div>
                 </div>
-                <% end %>
+                <div x-show="tab === 'for-sale'">
+                    <div class="bg-white my-3 px-16">
+                            <div class="my-3">
+                                <% @properties.for_sale.available.each do |property| %>
+                                <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                                    <%= link_to show_property_url(property) do %>
+                                        <div class="w-full">
+                                            <%= image_tag property.property_cover_photo , class: "mobile-property-show-image w-full object-cover object-center" if property.property_cover_photo.attached? %>
+                                        </div>
+                                        <div class="py-3 px-24">
+                                            <div class="font-bold">
+                                            <%= property.name %><br>
+                                            </div>
+                                            <div class="text-gray-700">
+                                            <%= property.address %><br>
+                                            </div>
+                                            <div class="text-teal-700 font-bold whitespace-normal">
+                                                <% if property.for_sale? %>
+                                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for sale" %>
+                                                <% else %>
+                                                    <%= property.price > 0 ? number_to_currency(property.price, unit: "kshs", precision: 0) : "for rent" %>/month
+                                                <% end %>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                </div>
+                                <% end %>
+                            </div>
+                    </div>      
+                </div>
             </div>
+        </div>
+        <div x-show="tab === 'furniture'">
+            <div class="bg-white my-3 px-16">
+                    <div class="my-3">
+                        <% @furnitures.available.each do |furniture| %>
+                        <div class="shadow-2xl rounded-lg capitalize text-4xl my-8">
+                            <%= link_to show_furniture_url(furniture) do %>
+                                <div class="w-full">
+                                    <%= image_tag furniture.furniture_cover_photo , class: "mobile-property-show-image w-full object-cover object-center" if furniture.furniture_cover_photo.attached? %>
+                                </div>
+                                <div class="py-3 px-24">
+                                    <div class="font-bold">
+                                    <%= furniture.description %><br>
+                                    </div>
+                                    <div class="text-gray-700">
+                                    <%= furniture.address %><br>
+                                    </div>
+                                    <div class="text-teal-700 font-bold whitespace-normal">
+                                        <% if furniture.for_sale? %>
+                                            <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for sale" %>
+                                        <% else %>
+                                            <%= furniture.price > 0 ? number_to_currency(furniture.price, unit: "kshs", precision: 0) : "for display" %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            <% end %>
+                        </div>
+                        <% end %>
+                    </div>
+            </div>        
+        </div>
     </div>
     <div class="sticky bottom-0">
         <%= render 'navigation/mobile/footer' %>
