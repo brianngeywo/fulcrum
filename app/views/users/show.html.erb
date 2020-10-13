@@ -14,36 +14,41 @@
         </div>
         <div class="flex px-24">
             <div class="w-2/5 bg-gray-300 rounded-lg p-3 m-3">
-                <div class="text-center my-2 capitalize font-medium text-gray-700 tracking-wider">properties</div>
-                <div class="p-3 grid grid-cols-2 grid-rows-flow capitalize bg-gray-100 rounded-lg">
-                    <div class="grid justify-items-center">
-                        <div class="text-lg font-medium">for rent</div>
-                        <div><%=  @properties_for_rent %></div>
+                <% if @properties.present? %>    
+                    <div class="text-center my-2 capitalize font-medium text-gray-700 tracking-wider">properties</div>
+                    <div class="p-3 grid grid-cols-2 grid-rows-flow capitalize bg-gray-100 rounded-lg">
+                        <div class="grid justify-items-center">
+                            <div class="text-lg font-medium">for rent</div>
+                            <div><%=  @properties_for_rent %></div>
+                        </div>
+                        <div class="grid justify-items-center">
+                            <div class="text-lg font-medium">for sale</div>
+                            <div><%=  @properties_for_sale %></div>
+                        </div>
+                        <div class="grid justify-items-center">
+                            <div class="text-lg font-medium">sold</div>
+                            <div><%=  @properties_sold %></div>
+                        </div>
+                        <div class="grid justify-items-center">
+                            <div class="text-lg font-medium">leased</div>
+                            <div><%=  @properties_leased %></div>
+                        </div>
                     </div>
-                    <div class="grid justify-items-center">
-                        <div class="text-lg font-medium">for sale</div>
-                        <div><%=  @properties_for_sale %></div>
+                <% end %>
+                
+                <% if @furnitures.present? %>
+                    <div class="text-center my-2 capitalize font-medium text-gray-700 tracking-wider">furnitures</div>
+                    <div class="p-3 grid grid-cols-2 grid-rows-flow capitalize bg-gray-100 rounded-lg">
+                        <div class="grid justify-items-center">
+                            <div class="text-lg font-medium">for sale</div>
+                            <div><%=  @furnitures_for_sale %></div>
+                        </div>
+                        <div class="grid justify-items-center">
+                            <div class="text-lg font-medium">sold</div>
+                            <div><%=  @furnitures_sold %></div>
+                        </div>
                     </div>
-                    <div class="grid justify-items-center">
-                        <div class="text-lg font-medium">sold</div>
-                        <div><%=  @properties_sold %></div>
-                    </div>
-                    <div class="grid justify-items-center">
-                        <div class="text-lg font-medium">leased</div>
-                        <div><%=  @properties_leased %></div>
-                    </div>
-                </div>
-                <div class="text-center my-2 capitalize font-medium text-gray-700 tracking-wider">furnitures</div>
-                <div class="p-3 grid grid-cols-2 grid-rows-flow capitalize bg-gray-100 rounded-lg">
-                    <div class="grid justify-items-center">
-                        <div class="text-lg font-medium">for sale</div>
-                        <div><%=  @furnitures_for_sale %></div>
-                    </div>
-                    <div class="grid justify-items-center">
-                        <div class="text-lg font-medium">sold</div>
-                        <div><%=  @furnitures_sold %></div>
-                    </div>
-                </div>
+                <% end %>
                 <div class="capitalize text-blue-700 font-medium py-3 px-4"><%= link_to 'go to dashboard', dashboard_path if user_signed_in? %></div>
             </div>
             <div class="w-full">

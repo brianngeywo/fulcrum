@@ -25,27 +25,48 @@
         </div>
     </div>
     <div class="py-2 border-t-2 my-4 shadow-2xl">
-        <div class="font-bold text-gray-700 text-center capitalize text-5xl my-3">agent stats</div>
-        <div class="bg-gray-300 text-4xl">
-            <div class="p-3 grid grid-cols-2 grid-rows-flow capitalize bg-gray-100">
-                <div class="grid justify-items-center">
-                    <div class="font-medium">for rent</div>
-                    <div><%=  @properties_for_rent %></div>
+        <div class="font-bold text-gray-700 text-center capitalize text-5xl py-4 border-b-2">agent stats</div>
+        
+        <% if @properties.present? %>
+            <div class="text-gray-700 text-center capitalize text-5xl my-3">property</div>
+            <div class="bg-gray-300 text-4xl">
+                <div class="p-3 grid grid-cols-2 grid-rows-flow capitalize bg-gray-100">
+                    <div class="grid justify-items-center">
+                        <div class="font-medium">for rent</div>
+                        <div><%=  @properties_for_rent %></div>
+                    </div>
+                    <div class="grid justify-items-center">
+                        <div class="font-medium">for sale</div>
+                        <div><%=  @properties_for_sale %></div>
+                    </div>
+                    <div class="grid justify-items-center">
+                        <div class="font-medium">sold</div>
+                        <div><%=  @properties_sold %></div>
+                    </div>
+                    <div class="grid justify-items-center">
+                        <div class="font-medium">leased</div>
+                        <div><%=  @properties_leased %></div>
+                    </div>
                 </div>
-                <div class="grid justify-items-center">
-                    <div class="font-medium">for sale</div>
-                    <div><%=  @properties_for_sale %></div>
+            </div>            
+        <% end %>
+        
+        <% if @furnitures.present? %>
+            <div class="text-gray-700 text-center capitalize text-5xl my-3">furnitures</div>
+            <div class="bg-gray-300 text-4xl">
+                <div class="p-3 grid grid-cols-2 grid-rows-flow capitalize bg-gray-100">
+                    <div class="grid justify-items-center">
+                        <div class="font-medium">for sale</div>
+                        <div><%=  @furnitures_for_sale %></div>
+                    </div>
+                    <div class="grid justify-items-center">
+                        <div class="font-medium">sold</div>
+                        <div><%=  @furnitures_sold %></div>
+                    </div>
                 </div>
-                <div class="grid justify-items-center">
-                    <div class="font-medium">sold</div>
-                    <div><%=  @properties_sold %></div>
-                </div>
-                <div class="grid justify-items-center">
-                    <div class="font-medium">leased</div>
-                    <div><%=  @properties_leased %></div>
-                </div>
-            </div>
-        </div>
+            </div>            
+        <% end %>
+        
     </div>
     <div class="bg-white my-3 px-16">
             <div class="my-3">
