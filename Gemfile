@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.10'
+ruby '2.5.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2'
+gem 'rails', '~> 6.0'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
@@ -69,6 +69,5 @@ gem "erb2haml", :group => :development
 gem 'semantic-ui-sass'
 gem 'jquery-rails'
 gem 'phony_rails'
-gem 'trix-gem', require: 'trix', git: "https://github.com/DRBragg/trix-gem"
 gem 'ransack'
 gem 'rails_12factor', group: :production

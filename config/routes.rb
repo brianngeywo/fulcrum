@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   resources :rentors
   get "users/:id" => "users#show"
-  root to: 'home#guide'
+  root to: 'properties#index'
   get "home/rentals"
   get "home/property_on_sale"
   get "home/about", as: 'get_to_know_us'

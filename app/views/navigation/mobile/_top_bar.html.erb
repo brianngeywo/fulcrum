@@ -7,7 +7,7 @@
         </button>
 
         <ul x-show.transition="open" class="bg-white absolute mt-2 shadow-2xl rounded w-auto px-8 py-2 text-gray-800 font-normal capitalize right-0 z-auto">
-            <li class="py-2 px-3 my-2 block border-t-2"><%= link_to 'home page', root_path %></li>
+            <li class="py-2 px-3 my-2 block border-t-2"><%= link_to 'properties', all_properties_path %></li>
             <li class="py-2 px-3 border-b my-2 block border-t-2"> <%= link_to 'furniture', all_furnitures_path %>
           <% if user_signed_in? %>
             <li class="py-2 px-3 my-2 block border-t-2"><%= link_to 'profile', current_user %></li>
